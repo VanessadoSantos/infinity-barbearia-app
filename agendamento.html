@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agendamento - Barbearia</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<a href="https://wa.me/55119964995899" class="whatsapp">💬</a>
+
+<header>
+  <h1>Agendamento</h1>
+  <nav>
+    <a href="index.html">Voltar</a>
+  </nav>
+</header>
+
+<section class="form-section">
+
+  <h2>Agende seu horário</h2>
+
+  <form onsubmit="agendar(event)">
+
+    <!-- DADOS -->
+    <input type="text" id="nome" placeholder="Nome" required>
+    <input type="text" id="endereco" placeholder="Endereço" required>
+    <input type="text" id="cep" placeholder="CEP" required>
+    <input type="text" id="cpf" placeholder="CPF" required>
+    <input type="text" id="whatsapp" placeholder="WhatsApp" required>
+    <input type="email" id="email" placeholder="Email" required>
+
+    <!-- SERVIÇOS (MULTIPLA ESCOLHA) -->
+    <h3>Escolha os serviços</h3>
+
+    <label><input type="checkbox" value="Corte"> Corte</label>
+    <label><input type="checkbox" value="Barba"> Barba</label>
+    <label><input type="checkbox" value="Corte + Barba"> Corte + Barba</label>
+    <label><input type="checkbox" value="Sobrancelha"> Sobrancelha</label>
+
+    <!-- DATA -->
+    <input type="date" id="data" required>
+    <input type="time" id="hora" required>
+
+    <button type="submit">Confirmar Agendamento</button>
+
+  </form>
+
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
