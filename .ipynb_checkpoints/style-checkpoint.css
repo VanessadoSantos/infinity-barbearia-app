@@ -1,0 +1,85 @@
+/* BASE */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #0a0a0a;
+  color: #fff;
+}
+
+/* HEADER */
+.header {
+  background: rgba(0,0,0,0.8);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* MENU */
+.nav a {
+  color: #ccc;
+  transition: 0.3s;
+}
+
+.nav a:hover {
+  color: gold;
+}
+
+/* HERO */
+.hero {
+  height: 100vh;
+  background: url('images/barbearia.jpg') center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-content h1 {
+  font-size: 50px;
+  letter-spacing: 2px;
+}
+
+/* BOTÃO */
+.btn {
+  background: linear-gradient(45deg, gold, #d4af37);
+  color: black;
+  padding: 12px 25px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+/* CARDS */
+.card {
+  background: #111;
+  border: 1px solid #222;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  border-color: gold;
+}
+
+/* GALERIA */
+.grid img {
+  transition: 0.3s;
+}
+
+.grid img:hover {
+  transform: scale(1.05);
+}
+
+/* WHATSAPP */
+.whatsapp {
+  background: #25d366;
+  box-shadow: 0 0 15px #25d366;
+}
+
+/* FOOTER */
+.footer {
+  border-top: 1px solid #222;
+}

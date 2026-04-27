@@ -1,9 +1,44 @@
 /* BASE */
+:root {
+  --primary-color: #d4af37;
+  --secondary-color: #000000;
+  --text-color: #fff;
+  --background-color: #0a0a0a;
+  --accent-color: gold;
+}
+
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: #0a0a0a;
-  color: #fff;
+  background: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  font-weight: 700;
+  color: var(--accent-color);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: var(--primary-color);
+}
+
+/* CONTAINERS */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.section {
+  padding: 60px 20px;
 }
 
 /* HEADER */
@@ -13,50 +48,113 @@ body {
   position: sticky;
   top: 0;
   z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo img {
+  height: 60px;
+  transition: transform 0.3s;
+}
+
+.logo img:hover {
+  transform: scale(1.05);
 }
 
 /* MENU */
-.nav a {
-  color: #ccc;
-  transition: 0.3s;
+.nav {
+  display: flex;
+  gap: 15px;
 }
 
-.nav a:hover {
-  color: gold;
+.nav a {
+  color: #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  transition: all 0.3s;
+}
+
+.nav a:hover, .nav a:focus {
+  color: var(--accent-color);
+  background: rgba(255,255,255,0.1);
 }
 
 /* HERO */
 .hero {
   height: 100vh;
-  background: url('images/barbearia.jpg') center/cover;
+  background: url('images/ambiente.png') center/cover no-repeat;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.hero-content h1 {
-  font-size: 50px;
-  letter-spacing: 2px;
+.hero .overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
 }
 
-/* BOTÃO */
+.hero-content {
+  position: relative;
+  text-align: center;
+  color: #fff;
+  z-index: 2;
+}
+
+.hero-content h1 {
+  font-size: 60px;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+}
+
+.hero-content p {
+  font-size: 20px;
+  margin: 15px 0;
+}
+
+/* BOTÕES */
 .btn {
-  background: linear-gradient(45deg, gold, #d4af37);
-  color: black;
+  background: linear-gradient(45deg, var(--accent-color), var(--primary-color));
+  color: var(--secondary-color);
   padding: 12px 25px;
   border-radius: 8px;
-  transition: 0.3s;
+  transition: all 0.3s;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
 }
 
-.btn:hover {
+.btn:hover, .btn:focus {
   transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
 }
 
 /* CARDS */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap: 20px;
+}
+
 .card {
   background: #111;
   border: 1px solid #222;
+  padding: 20px;
+  border-radius: 10px;
   transition: 0.3s;
+  text-align: center;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 8px;
 }
 
 .card:hover {
@@ -66,6 +164,8 @@ body {
 
 /* GALERIA */
 .grid img {
+  width: 100%;
+  border-radius: 8px;
   transition: 0.3s;
 }
 
@@ -73,13 +173,132 @@ body {
   transform: scale(1.05);
 }
 
+/* FORMULÁRIOS */
+.contact-form, .form-section form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background: #111;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+.contact-form input, 
+.contact-form select, 
+.contact-form textarea,
+.form-section input, 
+.form-section select, 
+.form-section textarea {
+  padding: 12px;
+  border: 1px solid #333;
+  border-radius: 6px;
+  background: var(--background-color);
+  color: var(--text-color);
+  transition: border-color 0.3s;
+}
+
+.contact-form input:focus, 
+.contact-form select:focus, 
+.contact-form textarea:focus,
+.form-section input:focus, 
+.form-section select:focus, 
+.form-section textarea:focus {
+  border-color: var(--accent-color);
+  outline: none;
+}
+
+.contact-form button, .form-section button {
+  background: linear-gradient(45deg, var(--accent-color), var(--primary-color));
+  color: var(--secondary-color);
+  font-weight: bold;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: none;
+}
+
+.contact-form button:hover, .form-section button:hover,
+.contact-form button:focus, .form-section button:focus {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+}
+
 /* WHATSAPP */
 .whatsapp {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
   background: #25d366;
+  color: #fff;
+  padding: 15px;
+  border-radius: 50%;
+  font-size: 22px;
+  text-decoration: none;
+  transition: 0.3s;
   box-shadow: 0 0 15px #25d366;
+}
+
+.whatsapp:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px #25d366;
 }
 
 /* FOOTER */
 .footer {
+  background: #0a0a0a;
   border-top: 1px solid #222;
+  padding: 30px;
+  text-align: center;
+}
+
+.footer .social a {
+  margin: 0 10px;
+  color: #ccc;
+  transition: 0.3s;
+}
+
+.footer .social a:hover {
+  color: gold;
+}
+
+.footer .copy {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #777;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 40px;
+  }
+  .nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .header-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .contact-form, .form-section form {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 30px;
+  }
+  .hero-content p {
+    font-size: 16px;
+  }
+  .btn {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
 }
