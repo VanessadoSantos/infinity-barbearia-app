@@ -6,64 +6,134 @@
   <title>Agendamento - Barbearia Infinity</title>
   <meta name="description" content="Agende seu horário na Barbearia Infinity - cortes modernos, barba e experiência premium.">
   <link rel="icon" href="images/logo.png" type="image/png">
-  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="images/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- Botão WhatsApp Flutuante -->
-<a href="https://wa.me/55119964995899" class="whatsapp" aria-label="Falar no WhatsApp">💬</a>
+<a href="https://wa.me/55119964995899" class="whatsapp" aria-label="Falar no WhatsApp">
+  <span class="whatsapp-icon">💬</span>
+</a>
 
-<header>
-  <h1>Agendamento</h1>
-  <nav>
-    <a href="index.html">Voltar</a>
-  </nav>
+<header class="header">
+  <div class="container header-content">
+    <div class="logo">
+      <img src="images/logo.png" alt="Logo da Barbearia Infinity">
+    </div>
+    <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav class="nav" aria-label="Menu principal">
+      <a href="index.html">Home</a>
+      <a href="index.html#sobre">Sobre</a>
+      <a href="index.html#servicos">Serviços</a>
+      <a href="index.html#galeria">Galeria</a>
+      <a href="index.html#contato">Contato</a>
+    </nav>
+  </div>
 </header>
 
-<section class="form-section">
-  <h2>Agende seu horário</h2>
-
-  <form id="formAgendamento" onsubmit="agendar(event)">
-    
-    <!-- DADOS -->
-    <label for="nome">Nome</label>
-    <input type="text" id="nome" placeholder="Seu nome completo" required>
-
-    <label for="endereco">Endereço</label>
-    <input type="text" id="endereco" placeholder="Rua, número, bairro" required>
-
-    <label for="cep">CEP</label>
-    <input type="text" id="cep" placeholder="00000-000" pattern="[0-9]{5}-[0-9]{3}" required>
-
-    <label for="cpf">CPF</label>
-    <input type="text" id="cpf" placeholder="000.000.000-00" pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}" required>
-
-    <label for="whatsapp">WhatsApp</label>
-    <input type="tel" id="whatsapp" placeholder="(11) 99999-9999" required>
-
-    <label for="email">Email</label>
-    <input type="email" id="email" placeholder="seuemail@exemplo.com" required>
-
-    <!-- SERVIÇOS -->
-    <h3>Escolha os serviços</h3>
-    <label><input type="checkbox" value="Corte"> Corte</label>
-    <label><input type="checkbox" value="Barba"> Barba</label>
-    <label><input type="checkbox" value="Corte + Barba"> Corte + Barba</label>
-    <label><input type="checkbox" value="Sobrancelha"> Sobrancelha</label>
-
-    <!-- DATA -->
-    <label for="data">Data</label>
-    <input type="date" id="data" required>
-
-    <label for="hora">Hora</label>
-    <input type="time" id="hora" required>
-
-    <button type="submit">Confirmar Agendamento</button>
-  </form>
+<section class="hero hero-compact">
+  <div class="overlay"></div>
+  <div class="hero-content">
+    <span class="eyebrow">Agendamento</span>
+    <h1>Reserve seu horário premium</h1>
+    <p>Preencha seus dados e agilize seu atendimento exclusivo na Infinity.</p>
+  </div>
 </section>
 
+<main class="container">
+  <section class="section form-section">
+    <div class="section-header">
+      <h2>Agende seu horário</h2>
+      <p>Escolha a melhor data e garanta o seu atendimento com estilo.</p>
+    </div>
+
+    <div class="contact-grid">
+      <form id="formAgendamento" class="contact-form" onsubmit="agendar(event)">
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" placeholder="Seu nome completo" required>
+
+        <label for="endereco">Endereço</label>
+        <input type="text" id="endereco" placeholder="Rua, número, bairro" required>
+
+        <label for="cep">CEP</label>
+        <input type="text" id="cep" placeholder="00000-000" pattern="[0-9]{5}-[0-9]{3}" required>
+
+        <label for="cpf">CPF</label>
+        <input type="text" id="cpf" placeholder="000.000.000-00" pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}" required>
+
+        <label for="whatsapp">WhatsApp</label>
+        <input type="tel" id="whatsapp" placeholder="(11) 99999-9999" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="seuemail@exemplo.com" required>
+
+        <div class="checkbox-grid">
+          <label><input type="checkbox" value="Corte"> Corte</label>
+          <label><input type="checkbox" value="Barba"> Barba</label>
+          <label><input type="checkbox" value="Corte + Barba"> Corte + Barba</label>
+          <label><input type="checkbox" value="Sobrancelha"> Sobrancelha</label>
+        </div>
+
+        <label for="data">Data</label>
+        <input type="date" id="data" required>
+
+        <label for="hora">Hora</label>
+        <input type="time" id="hora" required>
+
+        <button type="submit" class="btn">Confirmar Agendamento</button>
+      </form>
+
+      <aside class="contact-card service-card">
+        <p>Pacotes Premium</p>
+        <strong>Escolha o serviço ideal para sua transformação.</strong>
+        <div class="service-list">
+          <div class="service-item">
+            <span>Corte VIP</span>
+            <p>Finalização premium com design de contorno e barba seca.</p>
+          </div>
+          <div class="service-item">
+            <span>Barba de Luxo</span>
+            <p>Modelagem, hidratação e retoque perfeito do contorno.</p>
+          </div>
+          <div class="service-item">
+            <span>Combo Executivo</span>
+            <p>Corte + barba + designer de sobrancelha para presença marcante.</p>
+          </div>
+        </div>
+        <a href="https://wa.me/55119964995899" class="btn btn-secondary">Abrir WhatsApp</a>
+      </aside>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer-content">
+    <div class="footer-brand">
+      <p>Infinity Barbearia</p>
+      <span>Experiência premium todos os dias</span>
+    </div>
+    <div class="social-links">
+      <a href="#" aria-label="Instagram">Instagram</a>
+      <a href="#" aria-label="Facebook">Facebook</a>
+      <a href="#" aria-label="WhatsApp">WhatsApp</a>
+    </div>
+    <p class="copy">© 2026 Vanessa Infinity Code - Todos os direitos reservados</p>
+  </div>
+</footer>
+
 <script src="script.js"></script>
+<script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("service-worker.js");
+}
+</script>
 </body>
 </html>

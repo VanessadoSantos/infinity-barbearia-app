@@ -38,8 +38,14 @@
   <div class="container header-content">
 
     <div class="logo">
-      <img src="images/logo.png" alt="Logo da Barbearia Infinity - estilo premium">
+      <img src="images/logo.png" alt="Logo da Barbearia Infinity">
     </div>
+
+    <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
 
     <nav class="nav" aria-label="Menu principal">
       <a href="#home">Home</a>
@@ -59,45 +65,106 @@
 <section id="home" class="hero">
   <div class="overlay"></div>
   <div class="hero-content">
+    <span class="eyebrow">Bem-vindo à Infinity</span>
     <h1>Estilo, Precisão e Exclusividade</h1>
-    <p>Experiência premium em cortes e barba</p>
-    <a href="agendamento.html" class="btn">Agendar Agora</a>
+    <p>Experiência premium em cortes e barba que eleva sua presença.</p>
+    <div class="hero-actions">
+      <a href="agendamento.html" class="btn">Agendar Agora</a>
+      <a href="#servicos" class="btn btn-secondary">Nossos Serviços</a>
+    </div>
+  </div>
+</section>
+
+<section id="destaques" class="section container">
+  <div class="section-header">
+    <h2>Destaques Premium</h2>
+    <p>Experiências e serviços criados para um público que busca luxo e cuidado impecável.</p>
+  </div>
+  <div class="gallery-grid">
+    <article class="card">
+      <img class="gallery-image" src="images/ambiente.png" alt="Ambiente sofisticado da barbearia" loading="lazy">
+      <div class="card-body">
+        <h3>Ambiente Sofisticado</h3>
+        <p>Espaço exclusivo com acabamento de alto padrão para relaxar enquanto você se transforma.</p>
+      </div>
+    </article>
+    <article class="card">
+      <img class="gallery-image" src="images/massagem.jpg" alt="Massagem relaxante na barbearia" loading="lazy">
+      <div class="card-body">
+        <h3>Relaxamento Premium</h3>
+        <p>Toque final suave e sensação renovada com tratamento de cuidado e bem-estar.</p>
+      </div>
+    </article>
+    <article class="card">
+      <img class="gallery-image" src="images/acessorios (2).jpg" alt="Produtos premium usados na barbearia" loading="lazy">
+      <div class="card-body">
+        <h3>Produtos de Alto Padrão</h3>
+        <p>Linhas premium para acabamento, hidratação e brilho natural.</p>
+      </div>
+    </article>
   </div>
 </section>
 
 <!-- SOBRE -->
 <section id="sobre" class="section container">
-  <h2>Sobre a Barbearia</h2>
-  <p>
-    A Barbearia Infinity é referência em estilo masculino, combinando tradição e modernidade 
-    para oferecer uma experiência única em cada atendimento.
-  </p>
+  <div class="section-header">
+    <h2>Sobre a Barbearia</h2>
+    <p>Onde cada atendimento é uma experiência cuidadosamente desenhada para você.</p>
+  </div>
+  <div class="about-grid">
+    <div class="about-card">
+      <h3>Atmosfera Premium</h3>
+      <p>Ambiente sofisticado, atendimento exclusivo e detalhes pensados para o seu conforto.</p>
+    </div>
+    <div class="about-card">
+      <h3>Equipe Especializada</h3>
+      <p>Profissionais experientes entregando cortes precisos e acabamento impecável.</p>
+    </div>
+  </div>
 </section>
 
 <!-- SERVIÇOS -->
 <section id="servicos" class="section container">
-  <h2>Serviços</h2>
-  <div class="grid">
+  <div class="section-header">
+    <h2>Serviços</h2>
+    <p>Pacotes premium para quem busca estilo, cuidado e confiança.</p>
+  </div>
+  <div class="grid service-grid">
 
     <article class="card">
-      <img src="images/cabelo (1).jpg" alt="Cliente recebendo corte masculino moderno" loading="lazy">
-      <h3>Corte Masculino</h3>
-      <p>Corte moderno personalizado.</p>
-      <strong>R$ 35</strong>
+      <img class="service-image" src="images/cabelo (1).jpg" alt="Cliente recebendo corte masculino moderno" loading="lazy">
+      <div class="card-body">
+        <h3>Corte Masculino</h3>
+        <p>Corte moderno personalizado para valorizar seu formato de rosto.</p>
+        <strong>R$ 35</strong>
+      </div>
     </article>
 
     <article class="card">
-      <img src="images/Barba (1).jpg" alt="Barba bem modelada e aparada" loading="lazy">
-      <h3>Barba</h3>
-      <p>Modelagem e acabamento profissional.</p>
-      <strong>R$ 25</strong>
+      <img class="service-image" src="images/Barba (1).jpg" alt="Barba bem modelada e aparada" loading="lazy">
+      <div class="card-body">
+        <h3>Barba</h3>
+        <p>Modelagem e acabamento profissional com linha premium.</p>
+        <strong>R$ 25</strong>
+      </div>
     </article>
 
     <article class="card">
-      <img src="images/Barba (2).jpg" alt="Cliente recebendo corte e barba completos" loading="lazy">
-      <h3>Corte + Barba</h3>
-      <p>Combo completo.</p>
-      <strong>R$ 50</strong>
+      <img class="service-image" src="images/Barba (2).jpg" alt="Cliente recebendo corte e barba completos" loading="lazy">
+      <div class="card-body">
+        <h3>Corte + Barba</h3>
+        <p>Combo completo para renovação total do visual.</p>
+        <strong>R$ 50</strong>
+      </div>
+    </article>
+
+    <article class="card">
+      <img class="service-image" src="images/sombrancelha.jpg" alt="Design de sobrancelha na barbearia" loading="lazy">
+      <div class="card-body">
+        <h3>Design de Sobrancelha</h3>
+        <p>Acabamento estético para um visual moderno e equilibrado.</p>
+        <strong>R$ 28</strong>
+      </div>
     </article>
 
   </div>
@@ -106,58 +173,85 @@
 <!-- GALERIA -->
 <section id="galeria" class="section dark">
   <div class="container">
-    <h2>Galeria</h2>
-    <div class="grid">
-      <img src="images/ambiente.png" alt="Ambiente sofisticado da barbearia" loading="lazy">
-      <img src="images/equipe.png" alt="Equipe profissional da Barbearia Infinity" loading="lazy">
-      <img src="images/acessorios (1).jpg" alt="Acessórios premium utilizados nos cortes" loading="lazy">
-      <img src="images/cabelo (1).jpg" alt="Exemplo de corte masculino moderno" loading="lazy">
+    <div class="section-header">
+      <h2>Galeria</h2>
+      <p>Veja algumas das transformações e do ambiente exclusivo da Infinity.</p>
+    </div>
+    <div class="gallery-grid">
+      <img class="gallery-image" src="images/ambiente.png" alt="Ambiente sofisticado da barbearia" loading="lazy">
+      <img class="gallery-image" src="images/equipe.png" alt="Equipe profissional da Barbearia Infinity" loading="lazy">
+      <img class="gallery-image" src="images/acessorios (1).jpg" alt="Acessórios premium utilizados nos cortes" loading="lazy">
+      <img class="gallery-image" src="images/cabelo (1).jpg" alt="Exemplo de corte masculino moderno" loading="lazy">
+      <img class="gallery-image" src="images/cabelo (2).jpg" alt="Corte masculino com acabamento premium" loading="lazy">
+      <img class="gallery-image" src="images/massagem.jpg" alt="Experiência de relaxamento na barbearia" loading="lazy">
     </div>
   </div>
 </section>
 
 <!-- CONTATO -->
 <section id="contato" class="section container">
-  <h2>Contato</h2>
-  <form id="contact-form" class="contact-form">
-    <label for="contact-nome">Nome</label>
-    <input id="contact-nome" type="text" placeholder="Seu nome" required>
+  <div class="section-header">
+    <h2>Contato</h2>
+    <p>Fale conosco e agende sua visita para viver a experiência Infinity.</p>
+  </div>
+  <div class="contact-grid">
+    <form id="contact-form" class="contact-form">
+      <label for="contact-nome">Nome</label>
+      <input id="contact-nome" type="text" placeholder="Seu nome" required>
 
-    <label for="contact-email">Email</label>
-    <input id="contact-email" type="email" placeholder="Seu email" required>
+      <label for="contact-email">Email</label>
+      <input id="contact-email" type="email" placeholder="Seu email" required>
 
-    <label for="motivo">Motivo do contato</label>
-    <select id="motivo" required>
-      <option value="">Selecione</option>
-      <option>Dúvida</option>
-      <option>Agendamento</option>
-      <option>Reclamação</option>
-      <option>Sugestão</option>
-    </select>
+      <label for="motivo">Motivo do contato</label>
+      <select id="motivo" required>
+        <option value="">Selecione</option>
+        <option>Dúvida</option>
+        <option>Agendamento</option>
+        <option>Reclamação</option>
+        <option>Sugestão</option>
+      </select>
 
-    <label for="contact-mensagem">Mensagem</label>
-    <textarea id="contact-mensagem" placeholder="Digite sua mensagem" required></textarea>
+      <label for="contact-mensagem">Mensagem</label>
+      <textarea id="contact-mensagem" placeholder="Digite sua mensagem" required></textarea>
 
-    <button type="submit" class="btn">Enviar</button>
-  </form>
+      <button type="submit" class="btn">Enviar</button>
+    </form>
 
-  <a href="https://wa.me/55119964995899" class="btn">Falar no WhatsApp</a>
+    <div class="contact-card">
+      <p>Quer atendimento rápido?</p>
+      <strong>Fale diretamente pelo WhatsApp</strong>
+      <a href="https://wa.me/55119964995899" class="btn btn-secondary">Abrir WhatsApp</a>
+    </div>
+  </div>
 </section>
 
 </main>
 
 <!-- FOOTER -->
 <footer class="footer">
-  <div class="social">
-    <a href="#">Instagram</a>
-    <a href="#">Facebook</a>
-    <a href="#">LinkedIn</a>
-    <a href="#">Blogger</a>
-    <a href="#">GitHub</a>
+  <div class="container footer-content">
+    <div class="footer-brand">
+      <p>Infinity Barbearia</p>
+      <span>Experiência premium todos os dias</span>
+    </div>
+    <div class="social-links">
+      <a href="#" aria-label="Instagram">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.75 2H16.25C19.35 2 22 4.65 22 7.75V16.25C22 19.35 19.35 22 16.25 22H7.75C4.65 22 2 19.35 2 16.25V7.75C2 4.65 4.65 2 7.75 2Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.75 11.9999C15.75 14.071 14.071 15.75 11.9999 15.75C9.92885 15.75 8.24988 14.071 8.24988 11.9999C8.24988 9.92885 9.92885 8.24988 11.9999 8.24988C14.071 8.24988 15.75 9.92885 15.75 11.9999Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M17.5 6.5H17.51" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Instagram
+      </a>
+      <a href="#" aria-label="Facebook">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2H15C12.7909 2 11 3.79086 11 6V8H8V12H11V22H15V12H18L19 8H15V6C15 5.44772 15.4477 5 16 5H19V2Z" fill="currentColor"/></svg>
+        Facebook
+      </a>
+      <a href="#" aria-label="WhatsApp">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382C17.2694 14.2213 16.5927 13.7967 16.458 13.74C16.3233 13.6833 16.1975 13.6666 16.071 13.795C15.9444 13.9234 15.05 14.444 14.9275 14.51C14.8049 14.576 14.7072 14.61 14.6099 14.539C14.5126 14.468 13.7934 14.158 13.029 13.598C12.3354 13.086 11.67 12.293 11.27 11.769C10.883 11.253 10.534 10.46 10.534 9.652C10.534 8.845 11.04 8.293 11.266 8.01C11.493 7.727 11.819 7.623 12.005 7.615C12.182 7.608 12.36 7.608 12.534 7.608C12.698 7.608 12.866 7.655 13.058 7.93C13.227 8.166 13.556 8.712 13.645 8.836C13.736 8.96 13.805 9.001 13.922 8.991C14.04 8.98 14.428 8.906 14.658 8.77C14.888 8.635 15.246 8.394 15.345 8.26C15.448 8.123 15.53 7.978 15.485 7.841C15.44 7.704 15.265 7.44 15.23 7.358C15.194 7.276 15.137 7.237 15.019 7.321C14.9 7.405 14.53 7.694 14.35 7.85C14.17 8.002 13.96 8.252 13.876 8.294C13.794 8.337 13.615 8.196 13.454 8.09C13.293 7.984 12.96 7.817 12.858 7.804C12.755 7.793 12.623 7.792 12.52 7.792C12.418 7.792 12.252 7.81 12.086 7.912C11.92 8.014 11.622 8.285 11.465 8.447C11.307 8.608 11.17 8.79 11.3 8.977C11.43 9.164 11.874 9.8 12.201 10.354C12.528 10.908 13.213 11.317 13.43 11.426C13.648 11.535 13.847 11.545 14.01 11.504C14.173 11.463 14.326 11.406 14.465 11.485C14.604 11.564 14.881 11.78 15.037 11.91C15.193 12.041 15.268 12.115 15.13 12.282C14.993 12.449 14.594 12.857 14.294 13.119C13.995 13.381 13.624 13.651 13.45 13.76C13.276 13.869 13.105 13.966 12.829 13.962C12.553 13.957 12.026 13.867 11.368 13.454C10.71 13.04 10.106 12.533 9.755 12.156C9.403 11.78 9.18 11.469 9.138 11.407C9.096 11.345 9.045 11.296 8.954 11.269C8.864 11.242 8.700 11.244 8.564 11.255C8.428 11.266 8.169 11.329 7.865 11.672C7.561 12.015 7.063 12.747 7.9 13.965C8.74 15.182 10.582 16.607 12.11 16.884C13.638 17.161 15.192 16.992 15.741 16.914C16.292 16.836 17.142 16.34 17.513 15.466C17.883 14.592 17.883 13.613 17.472 14.382Z" fill="currentColor"/></svg>
+        WhatsApp
+      </a>
+    </div>
+    <p class="copy">
+      © 2026 Vanessa Infinity Code - Todos os direitos reservados
+    </p>
   </div>
-  <p class="copy">
-    © 2026 Vanessa Infinity Code - Todos os direitos reservados
-  </p>
 </footer>
 
 <script src="script.js"></script>
