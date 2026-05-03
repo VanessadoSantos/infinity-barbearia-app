@@ -56,24 +56,24 @@
     </div>
 
     <div class="contact-grid">
-      <form id="formAgendamento" class="contact-form" onsubmit="agendar(event)">
+      <form id="contact-form" class="contact-form">
         <label for="nome">Nome</label>
-        <input type="text" id="nome" placeholder="Seu nome completo" required>
+        <input type="text" id="nome" autocomplete="name" placeholder="Seu nome completo" required>
 
         <label for="endereco">Endereço</label>
-        <input type="text" id="endereco" placeholder="Rua, número, bairro" required>
+        <input type="text" id="endereco" autocomplete="street-address" placeholder="Rua, número, bairro" required>
 
         <label for="cep">CEP</label>
-        <input type="text" id="cep" placeholder="00000-000" pattern="[0-9]{5}-[0-9]{3}" required>
+        <input type="text" id="cep" autocomplete="postal-code" placeholder="00000-000" pattern="[0-9]{5}-[0-9]{3}" required>
 
         <label for="cpf">CPF</label>
-        <input type="text" id="cpf" placeholder="000.000.000-00" pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}" required>
+        <input type="text" id="cpf" autocomplete="off" placeholder="000.000.000-00" pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}" required>
 
         <label for="whatsapp">WhatsApp</label>
-        <input type="tel" id="whatsapp" placeholder="(11) 99999-9999" required>
+        <input type="tel" id="whatsapp" autocomplete="tel" placeholder="(11) 99999-9999" required>
 
         <label for="email">Email</label>
-        <input type="email" id="email" placeholder="seuemail@exemplo.com" required>
+        <input type="email" id="email" autocomplete="email" placeholder="seuemail@exemplo.com" required>
 
         <div class="checkbox-grid">
           <label><input type="checkbox" value="Corte"> Corte</label>
@@ -137,6 +137,27 @@
     </div>
   </section>
 </main>
+
+<section class="section container">
+  <div class="section-header">
+    <h2>Por que escolher a Infinity?</h2>
+    <p>Atendimento personalizado, ambiente premium e resultado impecável em cada visita.</p>
+  </div>
+  <div class="about-grid">
+    <div class="about-card">
+      <h3>Experiência personalizada</h3>
+      <p>Atendimento dedicado para que cada corte e finalização estejam alinhados ao seu estilo.</p>
+    </div>
+    <div class="about-card">
+      <h3>Ambiente exclusivo</h3>
+      <p>Espaço sofisticado com acabamento de alto padrão e clima confortável para você relaxar.</p>
+    </div>
+    <div class="about-card">
+      <h3>Resultados impecáveis</h3>
+      <p>Cortes precisos, barba bem delineada e tratamento capilar com produtos premium.</p>
+    </div>
+  </div>
+</section>
 
 <footer class="footer">
   <div class="container footer-content">
