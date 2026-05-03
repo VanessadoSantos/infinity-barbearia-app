@@ -305,6 +305,71 @@ a:hover {
   transform: scale(1.05);
 }
 
+.cta-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 32px 36px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.08));
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  border-radius: 28px;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.22);
+}
+
+.cta-card h2 {
+  margin: 0 0 10px;
+  color: var(--secondary-color);
+  font-size: clamp(1.8rem, 2.4vw, 2.8rem);
+}
+
+.cta-card p {
+  margin: 0;
+  color: #d0d0d0;
+  max-width: 620px;
+}
+
+.step-grid {
+  display: grid;
+  gap: 20px;
+  margin-top: 36px;
+}
+
+.step-item {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 18px;
+  align-items: center;
+  padding: 24px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.14);
+}
+
+.step-item span {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(212, 175, 55, 0.18);
+  color: var(--primary-color);
+  font-weight: 800;
+  font-size: 1.15rem;
+}
+
+.step-item h3 {
+  margin: 0 0 8px;
+  color: var(--secondary-color);
+}
+
+.step-item p {
+  margin: 0;
+  color: #bdbdbd;
+  line-height: 1.7;
+}
+
 .about-card,
 .contact-card,
 .service-card {
@@ -593,6 +658,15 @@ a:hover {
 
   .hero-content h1 {
     font-size: clamp(2.4rem, 7vw, 3.6rem);
+  }
+
+  .cta-card {
+    flex-direction: column;
+    text-align: left;
+  }
+
+  .step-grid {
+    grid-template-columns: 1fr;
   }
 }
 
