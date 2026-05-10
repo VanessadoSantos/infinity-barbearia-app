@@ -1,472 +1,624 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0d0d0d">
+<meta name="description" content="Infinity Barbearia — Cortes premium, barba e atendimento profissional.">
+<title>Infinity Barbearia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-  <meta charset="UTF-8">
+:root {
+  --gold: #c8a96e;
+  --gold-light: #dfc08e;
+  --black: #0d0d0d;
+  --dark: #131313;
+  --dark2: #1c1c1c;
+  --dark3: #252525;
+  --white: #f2ede6;
+  --muted: #7a7570;
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'Inter', sans-serif;
+}
 
-  <meta 
-    name="viewport" 
-    content="width=device-width, initial-scale=1.0"
-  >
-  
-  <meta name="theme-color" content="#d4af37">
-  <title>Infinity Barbearia</title>
+html { scroll-behavior: smooth; }
+body { font-family: var(--sans); background: var(--black); color: var(--white); overflow-x: hidden; }
 
-  <meta 
-    name="description" 
-    content="Barbearia moderna com cortes premium, barba e atendimento profissional."
-  >
+/* LOADER */
+#loader {
+  position: fixed; inset: 0; background: var(--black);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  z-index: 9999; gap: 1.2rem;
+  transition: opacity 0.7s ease, visibility 0.7s ease;
+}
+#loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+.loader-brand {
+  font-family: var(--serif); font-size: 2rem; font-weight: 400;
+  letter-spacing: 0.25em; color: var(--gold);
+}
+.loader-bar { width: 140px; height: 1px; background: var(--dark3); overflow: hidden; }
+.loader-bar-fill { height: 100%; width: 0; background: var(--gold); animation: fillbar 1.6s ease forwards; }
+@keyframes fillbar { to { width: 100%; } }
 
-  <link rel="stylesheet" href="style.css">
-  <link rel="manifest" href="manifest.json">
-  <!-- GOOGLE FONTS -->
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 1.6rem 3rem;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: background 0.4s, padding 0.4s, border-color 0.4s;
+  border-bottom: 1px solid transparent;
+}
+nav.scrolled {
+  background: rgba(13,13,13,0.97); backdrop-filter: blur(12px);
+  padding: 1rem 3rem; border-color: rgba(200,169,110,0.12);
+}
+.nav-logo {
+  font-family: var(--serif); font-size: 1.35rem; font-weight: 400;
+  letter-spacing: 0.06em; color: var(--white); text-decoration: none;
+}
+.nav-logo span { color: var(--gold); font-style: italic; }
+.nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+.nav-links a {
+  font-size: 0.72rem; font-weight: 400; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--muted); text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-links .nav-cta {
+  color: var(--gold); border: 1px solid rgba(200,169,110,0.35);
+  padding: 0.45rem 1.1rem; transition: background 0.2s, color 0.2s;
+}
+.nav-links .nav-cta:hover { background: var(--gold); color: var(--black); }
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+.menu-toggle {
+  display: none; background: none; border: none; cursor: pointer;
+  flex-direction: column; gap: 5px; padding: 4px;
+}
+.menu-toggle span { display: block; width: 22px; height: 1px; background: var(--white); transition: 0.3s; }
 
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+/* HERO */
+.hero {
+  min-height: 100vh; display: flex; align-items: center;
+  position: relative; overflow: hidden; padding: 0 3rem;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background: url('https://images.unsplash.com/photo-1503951458645-643d53bfd90f?q=80&w=1800&auto=format&fit=crop') center/cover no-repeat;
+  filter: brightness(0.18) contrast(1.1);
+  transform: scale(1.04); animation: kzoom 18s ease-in-out infinite alternate;
+}
+@keyframes kzoom { to { transform: scale(1.0); } }
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to right, rgba(13,13,13,0.92) 45%, rgba(13,13,13,0.1) 100%);
+}
+.hero-content { position: relative; z-index: 1; max-width: 620px; }
 
-  <link 
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" 
-    rel="stylesheet"
-  >
+.hero-eyebrow {
+  display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem;
+  opacity: 0; animation: fadeup 0.8s 0.4s ease forwards;
+}
+.eyebrow-line { width: 32px; height: 1px; background: var(--gold); flex-shrink: 0; }
+.eyebrow-text {
+  font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--gold); font-weight: 400;
+}
 
+.hero h1 {
+  font-family: var(--serif); font-weight: 400;
+  font-size: clamp(2.8rem, 6.5vw, 5.2rem);
+  line-height: 1.1; letter-spacing: -0.01em; color: var(--white);
+  opacity: 0; animation: fadeup 0.9s 0.6s ease forwards;
+}
+.hero h1 em { font-style: italic; color: var(--gold); display: block; }
+
+.hero-sub {
+  margin-top: 1.8rem; font-size: 0.95rem; font-weight: 300;
+  color: var(--muted); line-height: 1.75; max-width: 400px;
+  opacity: 0; animation: fadeup 0.8s 0.85s ease forwards;
+}
+.hero-actions {
+  display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;
+  margin-top: 2.5rem;
+  opacity: 0; animation: fadeup 0.8s 1.05s ease forwards;
+}
+.hero-tech-note {
+  margin-top: 3rem; padding-top: 2rem;
+  border-top: 1px solid rgba(200,169,110,0.1);
+  display: flex; gap: 0.6rem; flex-wrap: wrap;
+  opacity: 0; animation: fadeup 0.8s 1.3s ease forwards;
+}
+.tech-tag {
+  font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--muted); background: rgba(200,169,110,0.06);
+  padding: 0.28rem 0.65rem; border: 1px solid rgba(200,169,110,0.12);
+}
+
+@keyframes fadeup { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
+
+.btn-primary {
+  background: var(--gold); color: var(--black);
+  padding: 0.85rem 1.8rem; font-size: 0.72rem; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none;
+  display: inline-block; transition: background 0.2s, transform 0.2s;
+  font-family: var(--sans); border: none; cursor: pointer;
+}
+.btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+.btn-ghost {
+  border: 1px solid rgba(242,237,230,0.2); color: rgba(242,237,230,0.6);
+  padding: 0.85rem 1.8rem; font-size: 0.72rem; font-weight: 300;
+  letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none;
+  display: inline-block; transition: border-color 0.2s, color 0.2s;
+}
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+.scroll-hint {
+  position: absolute; bottom: 2.5rem; left: 3rem; z-index: 1;
+  display: flex; align-items: center; gap: 0.75rem;
+  opacity: 0; animation: fadeup 1s 1.6s ease forwards;
+}
+.scroll-hint span { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); }
+.scroll-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); animation: blink 2s ease-in-out infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+
+/* SECTIONS */
+section { padding: 7rem 3rem; }
+.container { max-width: 1080px; margin: 0 auto; }
+
+.sec-label {
+  font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--gold); font-weight: 400; margin-bottom: 0.85rem;
+}
+.sec-title {
+  font-family: var(--serif); font-weight: 400;
+  font-size: clamp(2rem, 4.5vw, 3.4rem);
+  line-height: 1.15; color: var(--white);
+}
+.sec-title em { font-style: italic; color: var(--gold); }
+.sec-rule { width: 36px; height: 1px; background: var(--gold); margin: 1.8rem 0; }
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+/* SERVICES */
+#servicos { background: var(--dark); }
+.services-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 3.5rem; gap: 2rem; flex-wrap: wrap; }
+.services-intro { font-size: 0.88rem; font-weight: 300; color: var(--muted); max-width: 360px; line-height: 1.75; }
+.services-grid { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid rgba(200,169,110,0.08); }
+.service-card { padding: 2.5rem 2rem; border-right: 1px solid rgba(200,169,110,0.08); transition: background 0.3s; }
+.service-card:last-child { border-right: none; }
+.service-card:hover { background: rgba(200,169,110,0.04); }
+.svc-num { font-family: var(--serif); font-size: 0.85rem; font-style: italic; color: var(--gold); margin-bottom: 2rem; display: block; opacity: 0.6; }
+.service-card h3 { font-family: var(--serif); font-size: 1.3rem; font-weight: 400; color: var(--white); margin-bottom: 0.85rem; line-height: 1.2; }
+.service-card p { font-size: 0.82rem; font-weight: 300; color: var(--muted); line-height: 1.7; }
+
+/* PRICING */
+#precos { background: var(--black); }
+.pricing-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 3.5rem; gap: 2rem; flex-wrap: wrap; }
+.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(200,169,110,0.08); }
+.price-card { background: var(--black); padding: 3rem 2.5rem; transition: background 0.3s; }
+.price-card:hover { background: var(--dark); }
+.price-card.featured { background: var(--dark2); }
+.feat-badge { display: inline-block; font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(200,169,110,0.3); padding: 0.25rem 0.7rem; margin-bottom: 2rem; }
+.price-card h3 { font-family: var(--serif); font-size: 1.45rem; font-weight: 400; color: var(--white); margin-bottom: 1.2rem; }
+.price-amount { font-family: var(--serif); font-size: 3rem; font-weight: 400; color: var(--gold); line-height: 1; margin-bottom: 0.3rem; }
+.price-period { font-size: 0.7rem; color: var(--muted); letter-spacing: 0.08em; margin-bottom: 1.4rem; }
+.price-desc { font-size: 0.82rem; font-weight: 300; color: var(--muted); line-height: 1.7; margin-bottom: 2.5rem; }
+.price-card .btn-primary, .price-card .btn-ghost { display: block; text-align: center; }
+
+/* ABOUT */
+#sobre { background: var(--dark); }
+.about-grid { display: grid; grid-template-columns: 5fr 6fr; gap: 6rem; align-items: center; }
+.about-img-wrap { position: relative; }
+.about-img-wrap img { width: 100%; aspect-ratio: 3/4; object-fit: cover; filter: brightness(0.82) contrast(1.05) saturate(0.8); display: block; }
+.about-img-wrap::after { content: ''; position: absolute; top: 1.5rem; left: 1.5rem; right: -1.5rem; bottom: -1.5rem; border: 1px solid rgba(200,169,110,0.18); z-index: -1; }
+.about-text p { font-size: 0.88rem; font-weight: 300; color: var(--muted); line-height: 1.8; margin-bottom: 1rem; }
+.stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
+.stat-num { font-family: var(--serif); font-size: 2.5rem; font-weight: 400; color: var(--gold); line-height: 1; }
+.stat-label { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 0.4rem; }
+
+/* GALLERY */
+#galeria { background: var(--black); }
+.gallery-intro { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 3rem; gap: 2rem; flex-wrap: wrap; }
+.gallery-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: auto auto; gap: 3px; }
+.g-item { overflow: hidden; }
+.g-item:first-child { grid-row: 1 / 3; }
+.g-item img { width: 100%; height: 100%; min-height: 180px; object-fit: cover; filter: brightness(0.72) saturate(0.55); transition: filter 0.5s, transform 0.6s ease; display: block; }
+.g-item:hover img { filter: brightness(0.9) saturate(0.85); transform: scale(1.04); }
+
+/* CONTACT */
+#contato { background: var(--dark); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 6rem; align-items: start; }
+.contact-text p { font-size: 0.88rem; font-weight: 300; color: var(--muted); line-height: 1.8; margin-bottom: 2rem; }
+.contact-details { display: flex; flex-direction: column; gap: 1.1rem; margin-bottom: 2.5rem; }
+.cdetail { display: flex; gap: 1.2rem; align-items: flex-start; }
+.clabel { font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); min-width: 70px; padding-top: 2px; flex-shrink: 0; }
+.cval { font-size: 0.87rem; font-weight: 300; color: rgba(242,237,230,0.6); line-height: 1.5; }
+
+.form-group { margin-bottom: 1.4rem; }
+.form-group label { display: block; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem; }
+.form-group input,
+.form-group select {
+  width: 100%; background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(200,169,110,0.1); border-bottom-color: rgba(200,169,110,0.22);
+  color: var(--white); padding: 0.8rem 0.9rem;
+  font-family: var(--sans); font-size: 0.87rem; font-weight: 300;
+  outline: none; transition: border-color 0.2s, background 0.2s;
+  border-radius: 0; appearance: none;
+}
+.form-group input:focus,
+.form-group select:focus { border-color: var(--gold); background: rgba(200,169,110,0.03); }
+.form-group select option { background: var(--dark2); }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+#submitBtn { width: 100%; margin-top: 0.5rem; }
+
+/* TOAST */
+#toast {
+  position: fixed; bottom: 2rem; right: 2rem;
+  background: var(--dark2); border: 1px solid rgba(200,169,110,0.2);
+  color: var(--white); padding: 1rem 1.5rem; font-size: 0.82rem; font-weight: 300;
+  opacity: 0; transform: translateY(8px); transition: 0.3s ease;
+  pointer-events: none; z-index: 1000;
+}
+#toast.show { opacity: 1; transform: none; }
+
+/* WHATSAPP */
+.wa-btn {
+  position: fixed; bottom: 2rem; left: 2rem; z-index: 200;
+  background: #25d366; color: #fff; width: 50px; height: 50px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem; text-decoration: none; transition: transform 0.2s;
+}
+.wa-btn:hover { transform: scale(1.08); }
+
+/* FOOTER */
+footer { background: var(--dark2); border-top: 1px solid rgba(200,169,110,0.08); padding: 2rem 3rem; }
+.footer-inner { max-width: 1080px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+.footer-logo { font-family: var(--serif); font-size: 1.1rem; color: var(--gold); font-style: italic; }
+.footer-stack { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.stack-pill { font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); border: 1px solid rgba(200,169,110,0.1); padding: 0.2rem 0.5rem; }
+.footer-info { font-size: 0.7rem; font-weight: 300; color: var(--muted); }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  nav { padding: 1.4rem 1.5rem; }
+  nav.scrolled { padding: 0.9rem 1.5rem; }
+  .nav-links { display: none; position: fixed; inset: 0; background: var(--black); flex-direction: column; align-items: center; justify-content: center; gap: 2rem; }
+  .nav-links.open { display: flex; }
+  .nav-links a { font-size: 0.9rem; }
+  .menu-toggle { display: flex; position: relative; z-index: 200; }
+  section { padding: 5rem 1.5rem; }
+  .hero { padding: 0 1.5rem; }
+  .scroll-hint { left: 1.5rem; }
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .service-card { border-right: none; border-bottom: 1px solid rgba(200,169,110,0.08); }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .about-img-wrap::after { display: none; }
+  .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; }
+  .g-item:first-child { grid-row: auto; grid-column: 1 / 3; }
+  .form-row { grid-template-columns: 1fr; }
+  footer { padding: 2rem 1.5rem; }
+  .footer-inner { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+}
+@media (max-width: 540px) {
+  .services-grid { grid-template-columns: 1fr; }
+  .stats-row { grid-template-columns: 1fr 1fr; }
+}
+</style>
 </head>
-
 <body>
 
-  <!-- LOADING -->
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-brand">Infinity Barbearia</div>
+  <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+</div>
 
-  <div id="loader">
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#inicio" class="nav-logo">Infinity <span>Barbearia</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#inicio">Início</a></li>
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#precos">Preços</a></li>
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#galeria">Galeria</a></li>
+    <li><a href="#contato" class="nav-cta">Agendar</a></li>
+  </ul>
+  <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
 
-    <div class="spinner"></div>
-
-    <h2>Infinity Barbearia</h2>
-
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <div class="eyebrow-line"></div>
+      <span class="eyebrow-text">Barbearia Premium · São Paulo</span>
+    </div>
+    <h1>Estilo que<em>transforma.</em></h1>
+    <p class="hero-sub">Cortes modernos, barba impecável e uma experiência premium pensada para cada cliente.</p>
+    <div class="hero-actions">
+      <a href="#contato" class="btn-primary">Agendar horário</a>
+      <a href="#servicos" class="btn-ghost">Ver serviços</a>
+    </div>
+    <div class="hero-tech-note">
+      <span class="tech-tag">PWA</span>
+      <span class="tech-tag">WhatsApp API</span>
+      <span class="tech-tag">Google Calendar</span>
+      <span class="tech-tag">Service Worker</span>
+    </div>
   </div>
+  <div class="scroll-hint">
+    <div class="scroll-dot"></div>
+    <span>Rolar</span>
+  </div>
+</section>
 
-  <!-- HEADER -->
-
-  <header>
-
-    <div class="container">
-
-      <nav>
-
-        <div class="logo">
-
-          Infinity Barbearia
-
-        </div>
-
-        <!-- MENU MOBILE -->
-
-        <div class="menu-toggle" id="menu-toggle">
-
-          ☰
-
-        </div>
-
-        <!-- LINKS -->
-
-        <ul class="nav-links" id="nav-links">
-
-          <li>
-            <a href="#inicio">Início</a>
-          </li>
-
-          <li>
-            <a href="#servicos">Serviços</a>
-          </li>
-
-          <li>
-            <a href="#precos">Preços</a>
-          </li>
-
-          <li>
-            <a href="#sobre">Sobre</a>
-          </li>
-
-          <li>
-            <a href="#galeria">Galeria</a>
-          </li>
-
-          <li>
-            <a href="#contato">Contato</a>
-          </li>
-
-        </ul>
-
-      </nav>
-
-    </div>
-
-  </header>
-
-  <!-- HERO -->
-
-  <section class="hero" id="inicio">
-
-    <div class="container">
-
-      <div class="hero-content reveal">
-
-        <h1>
-
-          Estilo, atitude e
-          <span>corte perfeito</span>
-
-        </h1>
-
-        <p>
-
-          A Infinity Barbearia oferece experiência premium,
-          cortes modernos e atendimento profissional
-          para elevar seu visual.
-
-        </p>
-
-        <a href="agendamento.html" class="btn">
-
-          Agendar Horário
-
-        </a>
-
+<!-- SERVIÇOS -->
+<section id="servicos">
+  <div class="container">
+    <div class="services-header">
+      <div class="reveal">
+        <div class="sec-label">O que oferecemos</div>
+        <h2 class="sec-title">Nossos<br><em>Serviços</em></h2>
       </div>
-
-    </div>
-
-  </section>
-
-  <!-- SERVIÇOS -->
-
-  <section id="servicos">
-
-    <div class="container">
-
-      <div class="section-title reveal">
-
-        <h2>Nossos Serviços</h2>
-
-        <p>
-          Atendimento premium para elevar seu estilo.
-        </p>
-
-      </div>
-
-      <div class="services-grid">
-
-        <!-- CARD -->
-
-        <div class="service-card reveal">
-
-          <h3>Corte Masculino</h3>
-
-          <p>
-
-            Cortes modernos e personalizados
-            com acabamento profissional.
-
-          </p>
-
-        </div>
-
-        <!-- CARD -->
-
-        <div class="service-card reveal">
-
-          <h3>Barba Completa</h3>
-
-          <p>
-
-            Modelagem, hidratação e acabamento
-            premium para sua barba.
-
-          </p>
-
-        </div>
-
-        <!-- CARD -->
-
-        <div class="service-card reveal">
-
-          <h3>Pigmentação</h3>
-
-          <p>
-
-            Técnicas modernas para realçar
-            seu visual.
-
-          </p>
-
-        </div>
-
-        <!-- CARD -->
-
-        <div class="service-card reveal">
-
-          <h3>Combo Premium</h3>
-
-          <p>
-
-            Corte + barba + acabamento completo
-            em uma experiência diferenciada.
-
-          </p>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- PREÇOS -->
-
-  <section class="pricing" id="precos">
-
-    <div class="container">
-
-      <div class="section-title reveal">
-
-        <h2>Nossos Planos</h2>
-
-        <p>
-          Escolha o serviço ideal.
-        </p>
-
-      </div>
-
-      <div class="pricing-grid">
-
-        <!-- CARD -->
-
-        <div class="price-card reveal">
-
-          <h3>Corte Tradicional</h3>
-
-          <h4>R$ 35</h4>
-
-          <p>
-
-            Corte moderno com acabamento
-            profissional.
-
-          </p>
-
-          <a href="agendamento.html" class="btn">
-
-            Agendar
-
-          </a>
-
-        </div>
-
-        <!-- CARD DESTAQUE -->
-
-        <div class="price-card destaque reveal">
-
-          <span>Mais Popular</span>
-
-          <h3>Combo Premium</h3>
-
-          <h4>R$ 70</h4>
-
-          <p>
-
-            Corte + barba + acabamento premium.
-
-          </p>
-
-          <a href="agendamento.html" class="btn">
-
-            Agendar
-
-          </a>
-
-        </div>
-
-        <!-- CARD -->
-
-        <div class="price-card reveal">
-
-          <h3>Barba Completa</h3>
-
-          <h4>R$ 30</h4>
-
-          <p>
-
-            Modelagem profissional e hidratação.
-
-          </p>
-
-          <a href="agendamento.html" class="btn">
-
-            Agendar
-
-          </a>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- SOBRE -->
-
-  <section class="about" id="sobre">
-
-    <div class="container">
-
-      <div class="about-content reveal">
-
-        <img 
-          src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?q=80&w=1200&auto=format&fit=crop"
-          alt="Barbearia"
-        >
-
-        <div class="about-text">
-
-          <h2>Sobre a Infinity Barbearia</h2>
-
-          <p>
-
-            Somos apaixonados por estilo,
-            autoestima e atendimento premium.
-
-          </p>
-
-          <p>
-
-            Nossa missão é proporcionar uma
-            experiência única e moderna
-            para cada cliente.
-
-          </p>
-
-          <a href="#contato" class="btn">
-
-            Entrar em Contato
-
-          </a>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- GALERIA -->
-
-  <section id="galeria">
-
-    <div class="container">
-
-      <div class="section-title reveal">
-
-        <h2>Galeria</h2>
-
-        <p>
-          Confira alguns estilos e momentos.
-        </p>
-
-      </div>
-
-      <div class="gallery-grid reveal">
-
-        <img 
-          src="https://images.unsplash.com/photo-1517832606299-7ae9b720a186?q=80&w=1200&auto=format&fit=crop"
-          alt="Corte Masculino"
-        >
-
-        <img 
-          src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=1200&auto=format&fit=crop"
-          alt="Barbearia"
-        >
-
-        <img 
-          src="https://images.unsplash.com/photo-1503951458645-643d53bfd90f?q=80&w=1200&auto=format&fit=crop"
-          alt="Barbeiro"
-        >
-
-        <img 
-          src="https://images.unsplash.com/photo-1622287162716-f311baa1a2b8?q=80&w=1200&auto=format&fit=crop"
-          alt="Cliente"
-        >
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- CONTATO -->
-
-  <section class="contact" id="contato">
-
-    <div class="container reveal">
-
-      <div class="section-title">
-
-        <h2>Agende Seu Horário</h2>
-
-        <p>
-          Entre em contato e transforme seu visual.
-        </p>
-
-      </div>
-
-      <p>
-
-        Atendimento profissional,
-        ambiente moderno e experiência premium.
-
+      <p class="services-intro reveal" style="transition-delay:0.15s">
+        Cada detalhe pensado para elevar seu visual com precisão e atendimento de excelência.
       </p>
-
-      <a 
-        href="https://wa.me/5511999999999"
-        class="btn"
-        target="_blank"
-      >
-
-        Falar no WhatsApp
-
-      </a>
-
     </div>
+    <div class="services-grid reveal">
+      <div class="service-card">
+        <span class="svc-num">01</span>
+        <h3>Corte Masculino</h3>
+        <p>Cortes modernos e personalizados com acabamento profissional e atenção a cada detalhe.</p>
+      </div>
+      <div class="service-card">
+        <span class="svc-num">02</span>
+        <h3>Barba Completa</h3>
+        <p>Modelagem, hidratação e acabamento premium para uma barba sempre impecável.</p>
+      </div>
+      <div class="service-card">
+        <span class="svc-num">03</span>
+        <h3>Pigmentação</h3>
+        <p>Técnicas modernas para realçar e definir seu visual com estilo e precisão.</p>
+      </div>
+      <div class="service-card">
+        <span class="svc-num">04</span>
+        <h3>Combo Premium</h3>
+        <p>Corte + barba + acabamento completo. A experiência diferenciada e inesquecível.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-  </section>
+<!-- PREÇOS -->
+<section id="precos">
+  <div class="container">
+    <div class="pricing-header">
+      <div class="reveal">
+        <div class="sec-label">Investimento</div>
+        <h2 class="sec-title">Planos &amp;<br><em>Preços</em></h2>
+      </div>
+    </div>
+    <div class="pricing-grid reveal">
+      <div class="price-card">
+        <h3>Corte Tradicional</h3>
+        <div class="price-amount">R$ 35</div>
+        <div class="price-period">por sessão</div>
+        <p class="price-desc">Corte moderno com acabamento profissional para o dia a dia.</p>
+        <a href="#contato" class="btn-ghost">Agendar</a>
+      </div>
+      <div class="price-card featured">
+        <div class="feat-badge">★ Mais popular</div>
+        <h3>Combo Premium</h3>
+        <div class="price-amount">R$ 70</div>
+        <div class="price-period">corte + barba + acabamento</div>
+        <p class="price-desc">A experiência completa — corte, barba e acabamento premium em uma visita.</p>
+        <a href="#contato" class="btn-primary">Agendar</a>
+      </div>
+      <div class="price-card">
+        <h3>Barba Completa</h3>
+        <div class="price-amount">R$ 30</div>
+        <div class="price-period">por sessão</div>
+        <p class="price-desc">Modelagem profissional, hidratação e acabamento impecável.</p>
+        <a href="#contato" class="btn-ghost">Agendar</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <!-- FOOTER -->
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-wrap reveal">
+        <img src="https://images.unsplash.com/photo-1622287162716-f311baa1a2b8?q=80&w=800&auto=format&fit=crop" alt="Barbeiro profissional atendendo cliente">
+      </div>
+      <div class="reveal" style="transition-delay:0.2s">
+        <div class="sec-label">Nossa história</div>
+        <h2 class="sec-title">Sobre a<br><em>Infinity</em></h2>
+        <div class="sec-rule"></div>
+        <p>Somos apaixonados por estilo, autoestima e atendimento de qualidade. Nossa missão é proporcionar uma experiência única — onde cada cliente sai não apenas com um novo visual, mas com mais confiança.</p>
+        <p>Ambiente moderno, profissionais especializados e técnicas atualizadas para elevar seu padrão de atendimento.</p>
+        <div class="stats-row">
+          <div>
+            <div class="stat-num">500+</div>
+            <div class="stat-label">Clientes atendidos</div>
+          </div>
+          <div>
+            <div class="stat-num">5★</div>
+            <div class="stat-label">Avaliação média</div>
+          </div>
+          <div>
+            <div class="stat-num">3 anos</div>
+            <div class="stat-label">De experiência</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <footer>
+<!-- GALERIA -->
+<section id="galeria" style="background:var(--black)">
+  <div class="container">
+    <div class="gallery-intro">
+      <div class="reveal">
+        <div class="sec-label">Nosso trabalho</div>
+        <h2 class="sec-title">Galeria</h2>
+      </div>
+    </div>
+    <div class="gallery-grid reveal">
+      <div class="g-item">
+        <img src="https://images.unsplash.com/photo-1503951458645-643d53bfd90f?q=80&w=800&auto=format&fit=crop" alt="Barbeiro">
+      </div>
+      <div class="g-item">
+        <img src="https://images.unsplash.com/photo-1517832606299-7ae9b720a186?q=80&w=600&auto=format&fit=crop" alt="Corte masculino">
+      </div>
+      <div class="g-item">
+        <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=600&auto=format&fit=crop" alt="Barbearia">
+      </div>
+      <div class="g-item">
+        <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?q=80&w=600&auto=format&fit=crop" alt="Ambiente">
+      </div>
+      <div class="g-item">
+        <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?q=80&w=600&auto=format&fit=crop" alt="Profissional">
+      </div>
+    </div>
+  </div>
+</section>
 
-    <p>
+<!-- CONTATO -->
+<section id="contato" style="background:var(--dark)">
+  <div class="container">
+    <div class="reveal" style="margin-bottom:4rem">
+      <div class="sec-label">Fale conosco</div>
+      <h2 class="sec-title">Agende seu<br><em>horário</em></h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-text reveal">
+        <p>Atendimento profissional, ambiente moderno e uma experiência que vai além do corte. Entre em contato pelo formulário ou diretamente pelo WhatsApp.</p>
+        <div class="contact-details">
+          <div class="cdetail">
+            <span class="clabel">WhatsApp</span>
+            <span class="cval">(11) 99999-9999</span>
+          </div>
+          <div class="cdetail">
+            <span class="clabel">Horário</span>
+            <span class="cval">Segunda a Sábado · 9h às 20h</span>
+          </div>
+          <div class="cdetail">
+            <span class="clabel">Local</span>
+            <span class="cval">São Paulo, SP</span>
+          </div>
+        </div>
+        <a href="https://wa.me/5511999999999" target="_blank" class="btn-primary">💬 Falar no WhatsApp</a>
+      </div>
+      <div class="reveal" style="transition-delay:0.2s">
+        <div class="form-group">
+          <label>Nome completo</label>
+          <input type="text" id="nome" placeholder="Seu nome">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Telefone</label>
+            <input type="tel" id="tel" placeholder="(11) 9 9999-9999">
+          </div>
+          <div class="form-group">
+            <label>Serviço</label>
+            <select id="servico">
+              <option value="">Escolha...</option>
+              <option>Corte Masculino — R$ 35</option>
+              <option>Barba Completa — R$ 30</option>
+              <option>Pigmentação</option>
+              <option>Combo Premium — R$ 70</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Data</label>
+            <input type="date" id="data">
+          </div>
+          <div class="form-group">
+            <label>Horário</label>
+            <input type="time" id="hora">
+          </div>
+        </div>
+        <button class="btn-primary" id="submitBtn">Confirmar agendamento</button>
+      </div>
+    </div>
+  </div>
+</section>
 
-      © 2026 Infinity Barbearia • Desenvolvido por Vanessa dos Santos
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Infinity Barbearia</div>
+    <div class="footer-stack">
+      <span class="stack-pill">HTML5</span>
+      <span class="stack-pill">CSS3</span>
+      <span class="stack-pill">JavaScript</span>
+      <span class="stack-pill">PWA</span>
+      <span class="stack-pill">Service Worker</span>
+    </div>
+    <div class="footer-info">© 2026 · Desenvolvido por Vanessa dos Santos</div>
+  </div>
+</footer>
 
-    </p>
+<div id="toast"></div>
+<a href="https://wa.me/5511999999999" class="wa-btn" target="_blank" aria-label="WhatsApp">💬</a>
 
-  </footer>
+<script>
+window.addEventListener('load', () => setTimeout(() => document.getElementById('loader').classList.add('hidden'), 2000));
 
-  <!-- WHATSAPP -->
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 50), { passive: true });
 
-  <a
-    href="https://wa.me/5511999999999"
-    class="whatsapp-button"
-    target="_blank"
-  >
+const toggle = document.getElementById('menuToggle');
+const navLinks = document.getElementById('navLinks');
+toggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
 
-    💬
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  </a>
+const dataInput = document.getElementById('data');
+if (dataInput) dataInput.min = new Date().toISOString().split('T')[0];
 
-  <script src="script.js"></script>
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3500);
+}
 
+document.getElementById('submitBtn').addEventListener('click', () => {
+  const nome    = document.getElementById('nome').value.trim();
+  const tel     = document.getElementById('tel').value.trim();
+  const servico = document.getElementById('servico').value;
+  const data    = document.getElementById('data').value;
+  const hora    = document.getElementById('hora').value;
+  if (!nome || !tel || !servico || !data || !hora) { toast('⚠️ Preencha todos os campos'); return; }
+  const [y,m,d] = data.split('-');
+  const msg = encodeURIComponent(
+    `Olá! Gostaria de agendar:\n\n👤 *Nome:* ${nome}\n📱 *Telefone:* ${tel}\n✂️ *Serviço:* ${servico}\n📅 *Data:* ${d}/${m}/${y}\n🕐 *Horário:* ${hora}`
+  );
+  window.open(`https://wa.me/5511999999999?text=${msg}`, '_blank');
+  toast('✅ Abrindo WhatsApp...');
+});
+</script>
 </body>
 </html>
