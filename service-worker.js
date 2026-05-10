@@ -1,42 +1,99 @@
-const CACHE_NAME = "barbearia-cache-v1";
-const ASSETS_TO_CACHE = [
-  "/",
-  "/index.html",
-  "/agendamento.html",
-  "/style.css",
-  "/script.js",
-  "/manifest.json",
-  "/images/logo.png",
-  "/images/ambiente.png",
-  "/images/equipe.png",
-  "/images/acessorios (1).jpg",
-  "/images/cabelo (1).jpg",
-  "/images/Barba (1).jpg",
-  "/images/Barba (2).jpg"
+// ==========================
+// CACHE NAME
+// ==========================
+
+const CACHE_NAME = 'infinity-barbearia-v1';
+
+// ==========================
+// ARQUIVOS PARA CACHE
+// ==========================
+
+const urlsToCache = [
+
+  './',
+  './index.html',
+  './agendamento.html',
+
+  './style.css',
+  './agendamento.css',
+
+  './script.js',
+  './manifest.json',
+
 ];
 
-self.addEventListener("install", event => {
-  console.log("Service Worker installing.");
+// ==========================
+// INSTALAÇÃO
+// ==========================
+
+self.addEventListener('install', event => {
+
+  console.log('Service Worker instalado');
+
   event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS_TO_CACHE))
+
+    caches.open(CACHE_NAME)
+
+      .then(cache => {
+
+        return cache.addAll(urlsToCache);
+
+      })
+
   );
+
 });
 
-self.addEventListener("activate", event => {
-  console.log("Service Worker activating.");
+// ==========================
+// ATIVAÇÃO
+// ==========================
+
+self.addEventListener('activate', event => {
+
+  console.log('Service Worker ativado');
+
   event.waitUntil(
-    caches.keys().then(keys =>
-      Promise.all(
-        keys
-          .filter(key => key !== CACHE_NAME)
-          .map(key => caches.delete(key))
-      )
-    )
+
+    caches.keys().then(keys => {
+
+      return Promise.all(
+
+        keys.map(key => {
+
+          if(key !== CACHE_NAME){
+
+            return caches.delete(key);
+
+          }
+
+        })
+
+      );
+
+    })
+
   );
+
 });
 
-self.addEventListener("fetch", event => {
+// ==========================
+// FETCH
+// ==========================
+
+self.addEventListener('fetch', event => {
+
   event.respondWith(
-    caches.match(event.request).then(response => response || fetch(event.request))
+
+    caches.match(event.request)
+
+      .then(response => {
+
+        // CACHE FIRST
+
+        return response || fetch(event.request);
+
+      })
+
   );
+
 });
