@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Dashboard | Infinity Barbearia
+    </title>
+
+    <!-- FONTS -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- ICONS -->
+
+    <script
+        src="https://kit.fontawesome.com/7a4b62b0a4.js"
+        crossorigin="anonymous"
+    ></script>
+
+    <!-- CHART -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- CSS -->
+
+    <link
+        rel="stylesheet"
+        href="./style/admin.css"
+    >
+
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            Infinity
+            <span>Admin</span>
+
+        </div>
+
+        <nav class="sidebar-menu">
+
+            <a href="#">
+                <i class="fa-solid fa-chart-line"></i>
+                Dashboard
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-users"></i>
+                Clientes
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-calendar"></i>
+                Agendamentos
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-scissors"></i>
+                Serviços
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-box"></i>
+                Produtos
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-money-bill"></i>
+                Financeiro
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-gear"></i>
+                Configurações
+            </a>
+
+        </nav>
+
+    </aside>
+
+    <!-- MAIN -->
+
+    <main class="dashboard">
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <h1>
+                Dashboard
+            </h1>
+
+            <div class="admin-user">
+
+                <img
+                    src="../frontend/assets/images/admin.jpg"
+                    alt="Admin"
+                >
+
+                <div>
+
+                    <h4>
+                        Vanessa
+                    </h4>
+
+                    <span>
+                        Administradora
+                    </span>
+
+                </div>
+
+            </div>
+
+        </header>
+
+        <!-- CARDS -->
+
+        <section class="cards">
+
+    <article class="card">
+
+        <div>
+
+            <h3>
+                Entradas
+            </h3>
+
+            <span id="income">
+                R$ 0
+            </span>
+
+        </div>
+
+        <i class="fa-solid fa-arrow-trend-up"></i>
+
+    </article>
+
+    <article class="card">
+
+        <div>
+
+            <h3>
+                Saídas
+            </h3>
+
+            <span id="expense">
+                R$ 0
+            </span>
+
+        </div>
+
+        <i class="fa-solid fa-arrow-trend-down"></i>
+
+    </article>
+
+    <article class="card">
+
+        <div>
+
+            <h3>
+                Lucro
+            </h3>
+
+            <span id="profit">
+                R$ 0
+            </span>
+
+        </div>
+
+        <i class="fa-solid fa-wallet"></i>
+
+    </article>
+
+    <article class="card">
+
+        <div>
+
+            <h3>
+                Agendamentos
+            </h3>
+
+            <span id="appointmentsCount">
+                0
+            </span>
+
+        </div>
+
+        <i class="fa-solid fa-calendar"></i>
+
+    </article>
+
+</section>
+
+<!-- FINANCEIRO -->
+
+<section class="finance-section">
+
+    <div class="table-card">
+
+        <div class="table-header">
+
+            <h3>
+                Controle Financeiro
+            </h3>
+
+        </div>
+
+        <form id="financeForm">
+
+            <input
+                type="text"
+                id="title"
+                placeholder="Título"
+                required
+            >
+
+            <select id="type">
+
+                <option value="entrada">
+                    Entrada
+                </option>
+
+                <option value="saida">
+                    Saída
+                </option>
+
+            </select>
+
+            <input
+                type="number"
+                id="amount"
+                placeholder="Valor"
+                required
+            >
+
+            <input
+                type="text"
+                id="category"
+                placeholder="Categoria"
+            >
+
+            <button type="submit">
+
+                Salvar
+
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+        <!-- CHART -->
+
+        <section class="chart-section">
+
+            <div class="chart-card">
+
+                <h3>
+                    Crescimento Mensal
+                </h3>
+
+                <canvas id="financeChart"></canvas>
+
+            </div>
+
+        </section>
+
+        <!-- TABLE -->
+
+        <section class="table-section">
+
+            <div class="table-card">
+
+                <div class="table-header">
+
+                    <h3>
+                        Últimos Agendamentos
+                    </h3>
+
+                    <button>
+                        Ver Todos
+                    </button>
+
+                </div>
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Cliente
+                            </th>
+
+                            <th>
+                                Serviço
+                            </th>
+
+                            <th>
+                                Horário
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>
+                                Lucas
+                            </td>
+
+                            <td>
+                                Corte
+                            </td>
+
+                            <td>
+                                14:00
+                            </td>
+
+                            <td>
+                                <span class="status done">
+                                    Concluído
+                                </span>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                Rafael
+                            </td>
+
+                            <td>
+                                Barba
+                            </td>
+
+                            <td>
+                                15:30
+                            </td>
+
+                            <td>
+                                <span class="status pending">
+                                    Pendente
+                                </span>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                João
+                            </td>
+
+                            <td>
+                                Combo
+                            </td>
+
+                            <td>
+                                16:00
+                            </td>
+
+                            <td>
+                                <span class="status canceled">
+                                    Cancelado
+                                </span>
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- JS -->
+
+    <script src="./js/admin.js"></script>
+
+</body>
+
+</html>
