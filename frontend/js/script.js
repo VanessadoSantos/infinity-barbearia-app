@@ -2,17 +2,31 @@
 // MENU MOBILE
 // ========================================
 
-const menuMobile = document.getElementById('menu-mobile');
+const menuMobile =
+document.getElementById(
+    'menu-mobile'
+);
 
-const navbar = document.getElementById('navbar');
+const navbar =
+document.getElementById(
+    'navbar'
+);
 
-if(menuMobile){
+if(menuMobile && navbar){
 
-    menuMobile.addEventListener('click', () => {
+    menuMobile.addEventListener(
 
-        navbar.classList.toggle('active');
+        'click',
 
-    });
+        () => {
+
+            navbar.classList.toggle(
+                'active'
+            );
+
+        }
+
+    );
 
 }
 
@@ -20,71 +34,114 @@ if(menuMobile){
 // HEADER DINÂMICO
 // ========================================
 
-const header = document.querySelector('.header');
+const header =
+document.querySelector(
+    '.header'
+);
 
-window.addEventListener('scroll', () => {
+window.addEventListener(
 
-    if(window.scrollY > 50){
+    'scroll',
 
-        header.classList.add('active');
+    () => {
 
-    } else {
+        if(window.scrollY > 50){
 
-        header.classList.remove('active');
+            header.classList.add(
+                'active'
+            );
 
-    }
+        } else {
 
-});
+            header.classList.remove(
+                'active'
+            );
+
+        }
+
+    },
+
+    { passive:true }
+
+);
 
 // ========================================
 // LOADER
 // ========================================
 
-window.addEventListener('load', () => {
+window.addEventListener(
 
-    const loader = document.querySelector('.loader');
+    'load',
 
-    setTimeout(() => {
+    () => {
 
-        loader.style.display = 'none';
+        const loader =
+        document.querySelector(
+            '.loader'
+        );
 
-    }, 2000);
+        if(loader){
 
-});
+            setTimeout(() => {
+
+                loader.style.opacity = '0';
+
+                loader.style.visibility =
+                'hidden';
+
+            }, 1500);
+
+        }
+
+    }
+
+);
 
 // ========================================
 // SCROLL REVEAL
 // ========================================
 
-const revealElements = document.querySelectorAll(
-    '.card-diferencial, .servico-card, .plano-card'
+const revealElements =
+document.querySelectorAll(
+
+    '.card-diferencial, .servico-card'
+
 );
 
 function revealOnScroll(){
 
     const triggerBottom =
-        window.innerHeight * 0.85;
+    window.innerHeight * 0.85;
 
-    revealElements.forEach((element) => {
+    revealElements.forEach(
 
-        const elementTop =
+        (element) => {
+
+            const elementTop =
             element.getBoundingClientRect().top;
 
-        if(elementTop < triggerBottom){
+            if(elementTop < triggerBottom){
 
-            element.classList.add('show');
+                element.classList.add(
+                    'show'
+                );
+
+            }
 
         }
 
-    });
+    );
 
 }
 
-window.addEventListener('scroll', 
-    () => {
+window.addEventListener(
 
-    },
-    {passive:true}
+    'scroll',
+
+    revealOnScroll,
+
+    { passive:true }
+
 );
 
 revealOnScroll();
@@ -93,37 +150,74 @@ revealOnScroll();
 // BOTÃO VOLTAR TOPO
 // ========================================
 
-const backToTop = document.createElement('button');
+const backToTop =
+document.createElement(
+    'button'
+);
 
 backToTop.innerHTML =
+
 '<i class="fa-solid fa-arrow-up"></i>';
 
-backToTop.classList.add('back-to-top');
+backToTop.classList.add(
+    'back-to-top'
+);
 
-document.body.appendChild(backToTop);
+backToTop.setAttribute(
 
-window.addEventListener('scroll', () => {
+    'aria-label',
 
-    if(window.scrollY > 500){
+    'Voltar ao topo'
 
-        backToTop.classList.add('active');
+);
 
-    } else {
+document.body.appendChild(
+    backToTop
+);
 
-        backToTop.classList.remove('active');
+window.addEventListener(
+
+    'scroll',
+
+    () => {
+
+        if(window.scrollY > 500){
+
+            backToTop.classList.add(
+                'active'
+            );
+
+        } else {
+
+            backToTop.classList.remove(
+                'active'
+            );
+
+        }
+
+    },
+
+    { passive:true }
+
+);
+
+backToTop.addEventListener(
+
+    'click',
+
+    () => {
+
+        window.scrollTo({
+
+            top:0,
+
+            behavior:'smooth'
+
+        });
 
     }
 
-});
-
-backToTop.addEventListener('click', () => {
-
-    window.scrollTo({
-        top:0,
-        behavior:'smooth'
-    });
-
-});
+);
 
 // ========================================
 // NOTIFICAÇÕES
@@ -132,34 +226,53 @@ backToTop.addEventListener('click', () => {
 function showNotification(message){
 
     const notification =
-        document.createElement('div');
+    document.createElement(
+        'div'
+    );
 
-    notification.classList.add('notification');
+    notification.classList.add(
+        'notification'
+    );
 
-    notification.innerText = message;
+    notification.innerText =
+    message;
 
-    document.body.appendChild(notification);
+    document.body.appendChild(
+        notification
+    );
 
     setTimeout(() => {
 
-        notification.classList.add('show');
+        notification.classList.add(
+            'show'
+        );
 
     }, 100);
 
     setTimeout(() => {
 
-        notification.remove();
+        notification.classList.remove(
+            'show'
+        );
+
+        setTimeout(() => {
+
+            notification.remove();
+
+        }, 400);
 
     }, 3000);
 
 }
 
 // ========================================
-// CONTADORES ANIMADOS
+// CONTADORES
 // ========================================
 
 const counters =
-    document.querySelectorAll('.counter');
+document.querySelectorAll(
+    '.counter'
+);
 
 const speed = 200;
 
@@ -168,24 +281,34 @@ counters.forEach((counter) => {
     const updateCounter = () => {
 
         const target =
-            +counter.getAttribute('data-target');
+
+        +counter.getAttribute(
+            'data-target'
+        );
 
         const count =
-            +counter.innerText;
+        +counter.innerText;
 
         const increment =
-            target / speed;
+        target / speed;
 
         if(count < target){
 
             counter.innerText =
-                Math.ceil(count + increment);
 
-            setTimeout(updateCounter, 20);
+            Math.ceil(
+                count + increment
+            );
+
+            setTimeout(
+                updateCounter,
+                20
+            );
 
         } else {
 
-            counter.innerText = target;
+            counter.innerText =
+            target;
 
         }
 
@@ -196,91 +319,159 @@ counters.forEach((counter) => {
 });
 
 // ========================================
-// SCROLL SUAVE LINKS
+// SCROLL SUAVE
 // ========================================
 
-document.querySelectorAll('a[href^="#"]')
+document.querySelectorAll(
+    'a[href^="#"]'
+)
+
 .forEach((anchor) => {
 
-    anchor.addEventListener('click', function(e){
+    anchor.addEventListener(
 
-        e.preventDefault();
+        'click',
 
-        const section =
+        function(e){
+
+            e.preventDefault();
+
+            const section =
+
             document.querySelector(
-                this.getAttribute('href')
+
+                this.getAttribute(
+                    'href'
+                )
+
             );
 
-        section.scrollIntoView({
-            behavior:'smooth'
-        });
+            if(section){
 
-    });
+                section.scrollIntoView({
 
-});
+                    behavior:'smooth'
 
-// ========================================
-// EFEITO PARALLAX
-// ========================================
+                });
 
-const hero = document.querySelector('.hero');
+            }
 
-window.addEventListener('scroll', () => {
+        }
 
-    let offset = window.scrollY;
-
-    hero.style.backgroundPositionY =
-        offset * 0.5 + 'px';
+    );
 
 });
 
 // ========================================
-// ANIMAÇÃO TEXTO HERO
+// PARALLAX
+// ========================================
+
+const hero =
+document.querySelector(
+    '.hero'
+);
+
+window.addEventListener(
+
+    'scroll',
+
+    () => {
+
+        if(hero){
+
+            const offset =
+            window.scrollY;
+
+            hero.style.backgroundPositionY =
+
+            offset * 0.5 + 'px';
+
+        }
+
+    },
+
+    { passive:true }
+
+);
+
+// ========================================
+// HERO ANIMATION
 // ========================================
 
 const heroTitle =
-    document.querySelector('.hero-content h1');
+document.querySelector(
+    '.hero-content h1'
+);
 
 if(heroTitle){
 
-    heroTitle.classList.add('fade-title');
+    heroTitle.classList.add(
+        'fade-title'
+    );
 
 }
 
 // ========================================
-// FECHAR MENU AO CLICAR
+// FECHAR MENU MOBILE
 // ========================================
 
-document.querySelectorAll('.navbar a')
+document.querySelectorAll(
+    '.navbar a'
+)
+
 .forEach((link) => {
 
-    link.addEventListener('click', () => {
+    link.addEventListener(
 
-        navbar.classList.remove('active');
+        'click',
 
-    });
+        () => {
 
-});
+            navbar.classList.remove(
+                'active'
+            );
 
-// ========================================
-// DETECTAR ONLINE/OFFLINE
-// ========================================
+        }
 
-window.addEventListener('offline', () => {
-
-    showNotification(
-        'Você está sem internet.'
     );
 
 });
 
-window.addEventListener('online', () => {
+// ========================================
+// ONLINE/OFFLINE
+// ========================================
 
-    showNotification(
-        'Conexão restaurada.'
-    );
+window.addEventListener(
 
-});
+    'offline',
+
+    () => {
+
+        showNotification(
+
+            'Você está offline.'
+
+        );
+
+    }
+
+);
+
+window.addEventListener(
+
+    'online',
+
+    () => {
+
+        showNotification(
+
+            'Conexão restaurada.'
+
+        );
+
+    }
+
+);
 
 // ========================================
 // PRELOAD IMAGES
@@ -301,13 +492,6 @@ images.forEach((image) => {
 });
 
 // ========================================
-// SISTEMA PREPARADO
-// ========================================
-
-console.log(
-    'Infinity Barbearia carregada com sucesso.'
-);
-// ========================================
 // AGENDAMENTO
 // ========================================
 
@@ -319,35 +503,51 @@ document.getElementById(
 if(appointmentForm){
 
     appointmentForm.addEventListener(
+
         'submit',
 
         async (e) => {
 
             e.preventDefault();
 
+            const button =
+            appointmentForm.querySelector(
+                'button'
+            );
+
+            button.disabled = true;
+
+            button.innerText =
+            'Enviando...';
+
             const data = {
 
                 clientName:
+
                 document.getElementById(
                     'clientName'
-                ).value,
+                ).value.trim(),
 
                 phone:
+
                 document.getElementById(
                     'phone'
-                ).value,
+                ).value.trim(),
 
                 service:
+
                 document.getElementById(
                     'service'
                 ).value,
 
                 date:
+
                 document.getElementById(
                     'date'
                 ).value,
 
                 hour:
+
                 document.getElementById(
                     'hour'
                 ).value
@@ -356,43 +556,41 @@ if(appointmentForm){
 
             try{
 
-                const response =
-                await fetch(
+                // SIMULAÇÃO API
 
-                    'http://localhost:3000/api/appointments',
+                await new Promise(
 
-                    {
+                    (resolve) =>
 
-                        method:'POST',
-
-                        headers:{
-                            'Content-Type':
-                            'application/json'
-                        },
-
-                        body:JSON.stringify(
-                            data
-                        )
-
-                    }
+                    setTimeout(
+                        resolve,
+                        1500
+                    )
 
                 );
 
-                if(response.ok){
+                showNotification(
 
-                    showNotification(
-                        'Agendamento realizado.'
-                    );
+                    'Agendamento realizado com sucesso.'
 
-                    appointmentForm.reset();
+                );
 
-                }
+                appointmentForm.reset();
 
             } catch(error){
 
                 showNotification(
+
                     'Erro no agendamento.'
+
                 );
+
+            } finally {
+
+                button.disabled = false;
+
+                button.innerText =
+                'Agendar Agora';
 
             }
 
@@ -401,6 +599,7 @@ if(appointmentForm){
     );
 
 }
+
 // ========================================
 // PWA
 // ========================================
@@ -408,11 +607,14 @@ if(appointmentForm){
 if('serviceWorker' in navigator){
 
     window.addEventListener(
+
         'load',
 
         () => {
 
-            navigator.serviceWorker.register(
+            navigator.serviceWorker
+
+            .register(
                 './pwa/service-worker.js'
             )
 
@@ -426,7 +628,9 @@ if('serviceWorker' in navigator){
 
             .catch((error) => {
 
-                console.log(error);
+                console.error(
+                    error
+                );
 
             });
 
@@ -435,3 +639,31 @@ if('serviceWorker' in navigator){
     );
 
 }
+
+// ========================================
+// PERFORMANCE
+// ========================================
+
+window.addEventListener(
+
+    'load',
+
+    () => {
+
+        document.body.classList.add(
+            'loaded'
+        );
+
+    }
+
+);
+
+// ========================================
+// INIT
+// ========================================
+
+console.log(
+
+    'Infinity Barbearia carregada com sucesso.'
+
+);
