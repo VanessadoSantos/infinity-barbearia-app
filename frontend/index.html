@@ -15,29 +15,22 @@
         name="viewport"
         content="width=device-width, initial-scale=1.0"
     >
+
+    <!-- PWA -->
     <meta
-    name="theme-color"
-    content="#c59d5f"
->
+        name="theme-color"
+        content="#c59d5f"
+    >
 
-<meta
-    name="apple-mobile-web-app-capable"
-    content="yes"
->
+    <meta
+        name="apple-mobile-web-app-capable"
+        content="yes"
+    >
 
-<meta
-    name="apple-mobile-web-app-status-bar-style"
-    content="black-translucent"
->
-<meta
-    name="apple-mobile-web-app-capable"
-    content="yes"
->
-
-<meta
-    name="apple-mobile-web-app-status-bar-style"
-    content="black-translucent"
->
+    <meta
+        name="apple-mobile-web-app-status-bar-style"
+        content="black-translucent"
+    >
 
     <!-- SEO -->
     <title>
@@ -59,7 +52,13 @@
         content="Vanessa Infinity Code"
     >
 
+    <meta
+        name="robots"
+        content="index, follow"
+    >
+
     <!-- OPEN GRAPH -->
+
     <meta
         property="og:title"
         content="Infinity Barbearia"
@@ -80,13 +79,50 @@
         content="website"
     >
 
+    <meta
+        property="og:url"
+        content="https://seudominio.com"
+    >
+
+    <!-- TWITTER -->
+
+    <meta
+        name="twitter:card"
+        content="summary_large_image"
+    >
+
+    <meta
+        name="twitter:title"
+        content="Infinity Barbearia"
+    >
+
+    <meta
+        name="twitter:description"
+        content="Barbearia premium profissional."
+    >
+
+    <meta
+        name="twitter:image"
+        content="./assets/images/banner.jpg"
+    >
+
     <!-- FAVICON -->
+
     <link
         rel="icon"
         href="./assets/icons/favicon.png"
     >
 
+    <!-- PRELOAD -->
+
+    <link
+        rel="preload"
+        as="image"
+        href="./assets/images/banner.jpg"
+    >
+
     <!-- GOOGLE FONTS -->
+
     <link
         rel="preconnect"
         href="https://fonts.googleapis.com"
@@ -104,73 +140,75 @@
     >
 
     <!-- FONT AWESOME -->
+
     <script
         src="https://kit.fontawesome.com/7a4b62b0a4.js"
         crossorigin="anonymous"
     ></script>
 
     <!-- CSS -->
+
     <link
         rel="stylesheet"
         href="./style/style.css"
     >
-<link
-    rel="preload"
-    as="image"
-    href="./assets/images/banner.jpg"
->
-    <!-- PWA -->
+
+    <!-- MANIFEST -->
+
     <link
         rel="manifest"
         href="./pwa/manifest.json"
     >
-<!-- SCHEMA -->
 
-<script type="application/ld+json">
+    <!-- SCHEMA -->
 
-{
-    "@context":"https://schema.org",
+    <script type="application/ld+json">
 
-    "@type":"Barbershop",
+    {
+        "@context":"https://schema.org",
 
-    "name":"Infinity Barbearia",
+        "@type":"Barbershop",
 
-    "image":"./assets/images/banner.jpg",
+        "name":"Infinity Barbearia",
 
-    "telephone":"+55 11 99999-9999",
+        "image":"./assets/images/banner.jpg",
 
-    "address":{
+        "telephone":"+55 11 96499-5899",
 
-        "@type":"PostalAddress",
+        "address":{
 
-        "addressLocality":"São Paulo",
+            "@type":"PostalAddress",
 
-        "addressRegion":"SP",
+            "addressLocality":"São Paulo",
 
-        "addressCountry":"BR"
+            "addressRegion":"SP",
 
-    },
+            "addressCountry":"BR"
 
-    "priceRange":"$$",
+        },
 
-    "openingHours":"Mo-Sa 09:00-20:00"
-}
+        "priceRange":"$$",
 
-</script>
+        "openingHours":"Mo-Sa 09:00-20:00"
+    }
+
+    </script>
 
 </head>
 
 <body>
 
-    <!-- LOADING -->
+    <!-- LOADER -->
 
     <div class="loader">
 
         <div class="loader-content">
 
             <h1>
+
                 Infinity
                 <span>Barbearia</span>
+
             </h1>
 
         </div>
@@ -208,49 +246,64 @@
             id="navbar"
         >
 
-            <a href="#inicio" aria-label="Início">
+            <a
+                href="#inicio"
+                aria-label="Ir para início"
+            >
                 Início
             </a>
 
-            <a href="#servicos" aria-label="Serviços">
+            <a
+                href="#servicos"
+                aria-label="Ir para serviços"
+            >
                 Serviços
             </a>
 
-            <a href="#planos" aria-label="Planos">
-                Planos
-            </a>
-
-            <a href="#galeria" aria-label="Galeria">
+            <a
+                href="#galeria"
+                aria-label="Ir para galeria"
+            >
                 Galeria
             </a>
 
-            <a href="#depoimentos" aria-label="Depoimentos">
-                Depoimentos
+            <a
+                href="#agendamento"
+                aria-label="Ir para agendamento"
+            >
+                Agendamento
             </a>
 
-            <a href="#contato" aria-label="Contato">
+            <a
+                href="#contato"
+                aria-label="Ir para contato"
+            >
                 Contato
             </a>
 
         </nav>
 
-        <!-- BOTÃO -->
+        <!-- BOTÃO HEADER -->
 
         <a
-            href="https://wa.me/5511999999999"
+            href="https://wa.me/5511964995899"
             target="_blank"
+            rel="noopener noreferrer"
             class="btn-header"
+            aria-label="Agendar horário no WhatsApp"
         >
 
-            aria-label="Agendar Horário"
+            Agendar Horário
 
         </a>
 
     </header>
 
-    <!-- HERO -->
+    <!-- MAIN -->
 
     <main>
+
+        <!-- HERO -->
 
         <section
             class="hero"
@@ -280,19 +333,21 @@
                 <div class="hero-buttons">
 
                     <a
-                        href="https://wa.me/5511999999999"
+                        href="https://wa.me/5511964995899"
                         target="_blank"
+                        rel="noopener noreferrer"
                         class="btn-primary"
+                        aria-label="Agendar horário"
                     >
 
-                        aria-label="Agendar Horário"
+                        Agendar Agora
 
                     </a>
 
                     <a
                         href="#servicos"
                         class="btn-secondary"
-                        aria-label="Ver Serviços"
+                        aria-label="Ver serviços"
                     >
 
                         Ver Serviços
@@ -319,7 +374,7 @@
 
                 <p>
                     Profissionais especializados
-                    em tendências masculinas.
+                    nas tendências masculinas.
                 </p>
 
             </article>
@@ -333,8 +388,8 @@
                 </h3>
 
                 <p>
-                    Experiência confortável
-                    e profissional.
+                    Atendimento confortável,
+                    elegante e profissional.
                 </p>
 
             </article>
@@ -348,7 +403,7 @@
                 </h3>
 
                 <p>
-                    Produtos profissionais
+                    Produtos premium
                     e acabamento impecável.
                 </p>
 
@@ -356,15 +411,20 @@
 
         </section>
 
-        <!--images-->
+        <!-- GALERIA -->
 
-        <img
-    src="./assets/images/banner.jpg"
-    alt="Banner"
-    loading="lazy"
->
+        <section
+            class="banner-image"
+            id="galeria"
+        >
 
+            <img
+                src="./assets/images/banner.jpg"
+                alt="Banner Infinity Barbearia"
+                loading="lazy"
+            >
 
+        </section>
 
         <!-- SERVIÇOS -->
 
@@ -411,7 +471,8 @@
                     </h3>
 
                     <p>
-                        Modelagem e hidratação.
+                        Modelagem,
+                        hidratação e acabamento.
                     </p>
 
                     <span>
@@ -423,11 +484,12 @@
                 <article class="servico-card">
 
                     <h3>
-                        Corte + Barba
+                        Combo Premium
                     </h3>
 
                     <p>
-                        Combo completo premium.
+                        Corte +
+                        barba completa.
                     </p>
 
                     <span>
@@ -440,95 +502,149 @@
 
         </section>
 
+        <!-- AGENDAMENTO -->
+
+        <section
+            class="agendamento"
+            id="agendamento"
+        >
+
+            <div class="section-title">
+
+                <span>
+                    Agendamento
+                </span>
+
+                <h2>
+                    Agende seu horário
+                </h2>
+
+            </div>
+
+            <form
+                class="agendamento-form"
+                id="appointmentForm"
+            >
+
+                <input
+                    type="text"
+                    id="clientName"
+                    placeholder="Seu nome"
+                    required
+                >
+
+                <input
+                    type="tel"
+                    id="phone"
+                    placeholder="Seu telefone"
+                    required
+                >
+
+                <select
+                    id="service"
+                    required
+                >
+
+                    <option value="">
+                        Escolha um serviço
+                    </option>
+
+                    <option>
+                        Corte Masculino
+                    </option>
+
+                    <option>
+                        Barba Premium
+                    </option>
+
+                    <option>
+                        Combo Premium
+                    </option>
+
+                </select>
+
+                <input
+                    type="date"
+                    id="date"
+                    required
+                >
+
+                <input
+                    type="time"
+                    id="hour"
+                    required
+                >
+
+                <button
+                    type="submit"
+                    aria-label="Confirmar agendamento"
+                >
+
+                    Agendar Agora
+
+                </button>
+
+            </form>
+
+        </section>
+
+        <!-- CONTATO -->
+
+        <section
+            id="contato"
+            class="contato"
+        >
+
+            <div class="container contact-grid">
+
+                <div class="contact-info">
+
+                    <span class="section-tag">
+                        Contato
+                    </span>
+
+                    <h2>
+                        Fale conosco
+                    </h2>
+
+                    <p>
+                        Atendimento premium
+                        para elevar seu visual.
+                    </p>
+
+                    <a
+                        href="https://wa.me/5511964995899"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn-primary"
+                        aria-label="Falar no WhatsApp"
+                    >
+
+                        WhatsApp
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
     </main>
 
-    <!-- WHATSAPP -->
+    <!-- WHATSAPP FLOAT -->
 
     <a
-        href="https://wa.me/5511999999999"
+        href="https://wa.me/5511964995899"
         target="_blank"
+        rel="noopener noreferrer"
         class="whatsapp"
+        aria-label="WhatsApp Infinity Barbearia"
     >
 
         <i class="fa-brands fa-whatsapp"></i>
 
     </a>
-
-    <!-- AGENDAMENTO -->
-
-<section
-    class="agendamento"
-    id="agendamento"
->
-
-    <div class="section-title">
-
-        <span>
-            Agendamento
-        </span>
-
-        <h2>
-            Agende seu horário
-        </h2>
-
-    </div>
-
-    <form
-        class="agendamento-form"
-        id="appointmentForm"
-    >
-
-        <input
-            type="text"
-            id="clientName"
-            placeholder="Seu nome"
-            required
-        >
-
-        <input
-            type="text"
-            id="phone"
-            placeholder="Seu telefone"
-            required
-        >
-
-        <select id="service">
-
-            <option>
-                Corte Masculino
-            </option>
-
-            <option>
-                Barba Premium
-            </option>
-
-            <option>
-                Combo Completo
-            </option>
-
-        </select>
-
-        <input
-            type="date"
-            id="date"
-            required
-        >
-
-        <input
-            type="time"
-            id="hour"
-            required
-        >
-
-        <button type="submit">
-
-            Agendar Agora
-
-        </button>
-
-    </form>
-
-</section>
 
     <!-- FOOTER -->
 
@@ -539,10 +655,14 @@
         </h3>
 
         <p>
-            Desenvolvido por Vanessa Infinity Code
+            © 2026 • Desenvolvido por Vanessa Infinity Code
         </p>
 
     </footer>
+
+    <!-- TOAST -->
+
+    <div id="toast"></div>
 
     <!-- JS -->
 
