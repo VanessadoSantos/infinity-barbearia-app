@@ -1,39 +1,99 @@
-const jwt = require('jsonwebtoken');
+const jwt =
+require('jsonwebtoken');
 
-module.exports = (req, res, next) => {
+// ========================================
+// AUTH MIDDLEWARE
+// ========================================
 
-    const authHeader =
-    req.headers.authorization;
+module.exports = (
 
-    if(!authHeader){
+    req,
+    res,
+    next
 
-        return res.status(401).json({
-            message:'Token não encontrado'
-        });
-
-    }
-
-    const token =
-    authHeader.split(' ')[1];
+) => {
 
     try{
+
+        // ========================================
+        // AUTH HEADER
+        // ========================================
+
+        const authHeader =
+        req.headers.authorization;
+
+        // ========================================
+        // TOKEN VALIDATION
+        // ========================================
+
+        if(
+
+            !authHeader ||
+
+            !authHeader.startsWith(
+                'Bearer '
+            )
+
+        ){
+
+            return res.status(401).json({
+
+                success:false,
+
+                message:
+                'Token não encontrado.'
+
+            });
+
+        }
+
+        // ========================================
+        // GET TOKEN
+        // ========================================
+
+        const token =
+        authHeader.split(' ')[1];
+
+        // ========================================
+        // VERIFY TOKEN
+        // ========================================
 
         const decoded =
         jwt.verify(
 
             token,
+
             process.env.JWT_SECRET
 
         );
 
+        // ========================================
+        // USER DATA
+        // ========================================
+
         req.user = decoded;
+
+        // ========================================
+        // NEXT
+        // ========================================
 
         next();
 
     } catch(error){
 
+        // ========================================
+        // INVALID TOKEN
+        // ========================================
+
         return res.status(401).json({
-            message:'Token inválido'
+
+            success:false,
+
+            message:
+            'Token inválido.',
+
+            error:error.message
+
         });
 
     }
