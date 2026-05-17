@@ -1,36 +1,86 @@
-const express = require('express');
+const express =
+require('express');
 
-const router = express.Router();
+const router =
+express.Router();
+
+// ========================================
+// CONTROLLERS
+// ========================================
 
 const {
 
     createFinance,
+
     getFinances,
+
     deleteFinance
 
 } = require(
-'../controllers/financeController'
+
+    '../controllers/financeController'
+
 );
 
-// CREATE
+// ========================================
+// MIDDLEWARE
+// ========================================
+
+// FUTURO JWT AUTH
+// const authMiddleware =
+// require('../middleware/authMiddleware');
+
+// ========================================
+// ROUTES
+// ========================================
+
+// ========================================
+// CREATE FINANCE
+// POST /api/finances
+// ========================================
 
 router.post(
+
     '/',
+
+    // authMiddleware,
+
     createFinance
+
 );
 
-// READ
+// ========================================
+// GET ALL FINANCES
+// GET /api/finances
+// ========================================
 
 router.get(
+
     '/',
+
+    // authMiddleware,
+
     getFinances
+
 );
 
-// DELETE
+// ========================================
+// DELETE FINANCE
+// DELETE /api/finances/:id
+// ========================================
 
 router.delete(
+
     '/:id',
+
+    // authMiddleware,
+
     deleteFinance
+
 );
+
+// ========================================
+// EXPORT
+// ========================================
 
 module.exports = router;
