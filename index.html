@@ -1,72 +1,163 @@
 <!DOCTYPE html>
+<html lang="pt-BR">
 
-</section>
+<head>
 
-<section id="contato">
+  <meta charset="UTF-8">
 
-  <div class="container contact-grid">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-    <div class="contact-info reveal">
+  <title>
+    Infinity Barbearia
+  </title>
 
-      <span class="section-tag">Contato</span>
-      <h2>Agende seu horário</h2>
+<link rel="stylesheet" href="./style/style.css">
 
-      <p>
-        Entre em contato e agende seu atendimento premium.
-      </p>
+</head>
 
-      <a href="https://wa.me/5511999999999" class="btn-primary" target="_blank">
-        WhatsApp
-      </a>
+<body>
+
+  <!-- CONTATO -->
+
+  <section id="contato">
+
+    <div class="container contact-grid">
+
+      <!-- INFO -->
+
+      <div class="contact-info reveal">
+
+        <span class="section-tag">
+          Contato
+        </span>
+
+        <h2>
+          Agende seu horário
+        </h2>
+
+        <p>
+          Entre em contato e agende seu atendimento premium.
+        </p>
+
+        <a
+          href="https://wa.me/5511999999999"
+          class="btn-primary"
+          target="_blank"
+          aria-label="WhatsApp Infinity Barbearia"
+        >
+          WhatsApp
+        </a>
+
+      </div>
+
+      <!-- FORM -->
+
+      <form
+        class="contact-form reveal"
+        id="formAgendamento"
+      >
+
+        <input
+          type="text"
+          id="nome"
+          placeholder="Seu nome"
+          required
+        >
+
+        <input
+          type="tel"
+          id="telefone"
+          placeholder="Seu telefone"
+          required
+        >
+
+        <select
+          id="servico"
+          required
+        >
+
+          <option value="">
+            Escolha um serviço
+          </option>
+
+          <option>
+            Corte Masculino
+          </option>
+
+          <option>
+            Barba Premium
+          </option>
+
+          <option>
+            Pigmentação
+          </option>
+
+          <option>
+            Combo Premium
+          </option>
+
+        </select>
+
+        <div class="form-row">
+
+          <input
+            type="date"
+            id="data"
+            required
+          >
+
+          <input
+            type="time"
+            id="hora"
+            required
+          >
+
+        </div>
+
+        <button
+          type="submit"
+          class="btn-primary"
+          aria-label="Confirmar agendamento"
+        >
+
+          Confirmar Agendamento
+
+        </button>
+
+      </form>
 
     </div>
 
-    <form class="contact-form reveal" id="formAgendamento">
+  </section>
 
-      <input type="text" id="nome" placeholder="Seu nome" required>
+  <!-- FOOTER -->
 
-      <input type="tel" id="telefone" placeholder="Seu telefone" required>
+  <footer>
 
-      <select id="servico" required>
-        <option value="">Escolha um serviço</option>
-        <option>Corte Masculino</option>
-        <option>Barba Premium</option>
-        <option>Pigmentação</option>
-        <option>Combo Premium</option>
-      </select>
+    <div class="container footer-content">
 
-      <div class="form-row">
-        <input type="date" id="data" required>
-        <input type="time" id="hora" required>
-      </div>
+      <h3>
+        Infinity Barbearia
+      </h3>
 
-      <button type="submit" class="btn-primary">
-        Confirmar Agendamento
-      </button>
+      <p>
+        © 2026 • Desenvolvido por Vanessa dos Santos
+      </p>
 
-    </form>
+    </div>
 
-  </div>
+  </footer>
 
-</section>
+  <!-- TOAST -->
 
-<footer>
+  <div id="toast"></div>
 
-  <div class="container footer-content">
+  <!-- JS -->
 
-    <h3>Infinity Barbearia</h3>
-
-    <p>
-      © 2026 • Desenvolvido por Vanessa dos Santos
-    </p>
-
-  </div>
-
-</footer>
-
-<div id="toast"></div>
-
-<script src="script.js"></script>
+  <script src="./js/script.js"></script>
 
 </body>
 </html>
