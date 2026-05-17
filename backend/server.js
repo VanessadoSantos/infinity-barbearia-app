@@ -1,87 +1,141 @@
+// ========================================
+// IMPORTS
+// ========================================
+
 require('dotenv').config();
 
-const express = require('express');
+const express =
+require('express');
 
-const cors = require('cors');
+const cors =
+require('cors');
 
-const connectDB = require('./config/db');
+// ========================================
+// DATABASE
+// ========================================
+
+const connectDB =
+require('./config/db');
+
+// ========================================
+// ROUTES
+// ========================================
 
 const authRoutes =
 require('./routes/authRoutes');
 
+const appointmentRoutes =
+require('./routes/appointmentRoutes');
+
+const financeRoutes =
+require('./routes/financeRoutes');
+
+// ========================================
+// APP
+// ========================================
+
 const app = express();
 
-// CONECTAR DB
+// ========================================
+// DATABASE CONNECTION
+// ========================================
 
 connectDB();
 
+// ========================================
 // MIDDLEWARES
+// ========================================
 
 app.use(cors());
 
 app.use(express.json());
 
-// ROUTES
+app.use(
+    express.urlencoded({
+        extended:true
+    })
+);
 
-app.use('/api/auth', authRoutes);
+// ========================================
+// API ROUTES
+// ========================================
 
-app.use('/api/appointments', appointmentRoutes);
+// AUTH
 
-// SERVER
+app.use(
+    '/api/auth',
+    authRoutes
+);
 
-const PORT =
-process.env.PORT || 3000;
-
-app.listen(PORT, () => {
-
-    console.log(
-        `Servidor rodando na porta ${PORT}`
-    );
-
-});
-
-const appointmentRoutes =
-require('./routes/appointmentRoutes');
+// APPOINTMENTS
 
 app.use(
     '/api/appointments',
     appointmentRoutes
 );
-const financeRoutes =
-require('./routes/financeRoutes');
+
+// FINANCES
 
 app.use(
     '/api/finances',
     financeRoutes
 );
-require('dotenv').config();
 
-const express = require('express');
+// ========================================
+// TEST ROUTE
+// ========================================
 
-const cors = require('cors');
+app.get('/', (req, res) => {
 
-const connectDB = require('./config/db');
+    res.status(200).json({
 
-const authRoutes =
-require('./routes/authRoutes');
+        success:true,
 
-const app = express();
+        message:
+        'Infinity Barbearia API funcionando.'
 
-// CONECTAR DB
+    });
 
-connectDB();
+});
 
-// MIDDLEWARES
+// ========================================
+// 404 ROUTE
+// ========================================
 
-app.use(cors());
+app.use((req, res) => {
 
-app.use(express.json());
+    res.status(404).json({
 
-// ROUTES
+        success:false,
 
-app.use('/api/auth', authRoutes);
+        message:'Rota não encontrada.'
 
+    });
+
+});
+
+// ========================================
+// GLOBAL ERROR HANDLER
+// ========================================
+
+app.use((err, req, res, next) => {
+
+    console.error(err.stack);
+
+    res.status(500).json({
+
+        success:false,
+
+        message:
+        'Erro interno do servidor.'
+
+    });
+
+});
+
+// ========================================
 // SERVER
+// ========================================
 
 const PORT =
 process.env.PORT || 3000;
@@ -89,7 +143,10 @@ process.env.PORT || 3000;
 app.listen(PORT, () => {
 
     console.log(
-        `Servidor rodando na porta ${PORT}`
+
+        `🚀 Servidor rodando:
+        http://localhost:${PORT}`
+
     );
 
 });
