@@ -3,116 +3,302 @@
 
 <head>
 
-<meta charset="UTF-8">
+    <!-- META -->
 
-<meta
-name="viewport"
-content="width=device-width, initial-scale=1.0"
->
+    <meta charset="UTF-8">
 
-<title>
-Login Admin
-</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<link
-rel="stylesheet"
-href="./style/admin.css"
->
+    <meta
+        http-equiv="X-UA-Compatible"
+        content="IE=edge"
+    >
+
+    <!-- SEO -->
+
+    <title>
+        Infinity Barbearia | Login Admin
+    </title>
+
+    <meta
+        name="description"
+        content="Painel administrativo Infinity Barbearia."
+    >
+
+    <!-- FONTS -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- FONT AWESOME -->
+
+    <script
+        src="https://kit.fontawesome.com/7a4b62b0a4.js"
+        crossorigin="anonymous"
+    ></script>
+
+    <!-- CSS -->
+
+    <link
+        rel="stylesheet"
+        href="./style/admin.css"
+    >
 
 </head>
 
 <body>
 
-<div class="login-container">
+    <!-- BACKGROUND -->
 
-    <form
-        class="login-form"
-        id="loginForm"
-    >
+    <div class="login-background"></div>
 
-        <h1>
-            Login Admin
-        </h1>
+    <!-- LOGIN -->
 
-        <input
-            type="email"
-            id="email"
-            placeholder="Seu email"
+    <main class="login-container">
+
+        <form
+            class="login-form"
+            id="loginForm"
         >
 
-        <input
-            type="password"
-            id="password"
-            placeholder="Sua senha"
-        >
+            <!-- LOGO -->
 
-        <button type="submit">
+            <div class="login-logo">
 
-            Entrar
+                <h1>
 
-        </button>
+                    Infinity
+                    <span>Barbearia</span>
 
-    </form>
+                </h1>
 
-</div>
+                <p>
+                    Painel Administrativo
+                </p>
 
-<script>
+            </div>
 
-const form =
-document.getElementById('loginForm');
+            <!-- EMAIL -->
 
-form.addEventListener('submit',
-async (e) => {
+            <div class="input-group">
 
-    e.preventDefault();
+                <i class="fa-solid fa-envelope"></i>
 
-    const email =
-    document.getElementById('email').value;
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Seu email"
+                    required
+                >
 
-    const password =
-    document.getElementById('password').value;
+            </div>
 
-    const response =
-    await fetch(
-        'http://localhost:3000/api/auth/login',
-        {
+            <!-- PASSWORD -->
 
-            method:'POST',
+            <div class="input-group">
 
-            headers:{
-                'Content-Type':'application/json'
-            },
+                <i class="fa-solid fa-lock"></i>
 
-            body:JSON.stringify({
-                email,
-                password
-            })
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Sua senha"
+                    required
+                >
 
-        }
-    );
+            </div>
 
-    const data =
-    await response.json();
+            <!-- BUTTON -->
 
-    if(data.token){
+            <button
+                type="submit"
+                id="loginButton"
+            >
 
-        localStorage.setItem(
-            'token',
-            data.token
+                Entrar
+
+            </button>
+
+            <!-- MESSAGE -->
+
+            <div
+                class="login-message"
+                id="loginMessage"
+            ></div>
+
+        </form>
+
+    </main>
+
+    <!-- SCRIPT -->
+
+    <script>
+
+        const form =
+        document.getElementById(
+            'loginForm'
         );
 
-        window.location.href =
-        './index.html';
+        const button =
+        document.getElementById(
+            'loginButton'
+        );
 
-    } else {
+        const message =
+        document.getElementById(
+            'loginMessage'
+        );
 
-        alert('Login inválido');
+        form.addEventListener(
 
-    }
+            'submit',
 
-});
+            async (e) => {
 
-</script>
+                e.preventDefault();
+
+                const email =
+                document.getElementById(
+                    'email'
+                ).value.trim();
+
+                const password =
+                document.getElementById(
+                    'password'
+                ).value.trim();
+
+                // BUTTON LOADING
+
+                button.disabled = true;
+
+                button.innerText =
+                'Entrando...';
+
+                message.innerText = '';
+
+                try{
+
+                    const response =
+                    await fetch(
+
+                        'http://localhost:3000/api/auth/login',
+
+                        {
+
+                            method:'POST',
+
+                            headers:{
+
+                                'Content-Type':
+                                'application/json'
+
+                            },
+
+                            body:JSON.stringify({
+
+                                email,
+
+                                password
+
+                            })
+
+                        }
+
+                    );
+
+                    const data =
+                    await response.json();
+
+                    // SUCCESS
+
+                    if(data.success){
+
+                        localStorage.setItem(
+
+                            'token',
+
+                            data.token
+
+                        );
+
+                        localStorage.setItem(
+
+                            'user',
+
+                            JSON.stringify(
+                                data.user
+                            )
+
+                        );
+
+                        message.innerText =
+                        'Login realizado.';
+
+                        message.classList.add(
+                            'success'
+                        );
+
+                        setTimeout(() => {
+
+                            window.location.href =
+                            './index.html';
+
+                        }, 1000);
+
+                    } else {
+
+                        message.innerText =
+
+                        data.message ||
+                        'Login inválido.';
+
+                        message.classList.add(
+                            'error'
+                        );
+
+                    }
+
+                } catch(error){
+
+                    message.innerText =
+
+                    'Erro ao conectar servidor.';
+
+                    message.classList.add(
+                        'error'
+                    );
+
+                } finally {
+
+                    button.disabled = false;
+
+                    button.innerText =
+                    'Entrar';
+
+                }
+
+            }
+
+        );
+
+    </script>
 
 </body>
+
 </html>
