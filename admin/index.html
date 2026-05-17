@@ -3,6 +3,8 @@
 
 <head>
 
+    <!-- META -->
+
     <meta charset="UTF-8">
 
     <meta
@@ -10,9 +12,21 @@
         content="width=device-width, initial-scale=1.0"
     >
 
+    <meta
+        http-equiv="X-UA-Compatible"
+        content="IE=edge"
+    >
+
+    <!-- SEO -->
+
     <title>
         Dashboard | Infinity Barbearia
     </title>
+
+    <meta
+        name="description"
+        content="Painel administrativo Infinity Barbearia."
+    >
 
     <!-- FONTS -->
 
@@ -67,39 +81,44 @@
 
         <nav class="sidebar-menu">
 
-            <a href="#">
+            <a href="#" class="active">
+
                 <i class="fa-solid fa-chart-line"></i>
+
                 Dashboard
+
             </a>
 
-            <a href="#">
-                <i class="fa-solid fa-users"></i>
-                Clientes
-            </a>
+            <a href="#appointmentsSection">
 
-            <a href="#">
                 <i class="fa-solid fa-calendar"></i>
+
                 Agendamentos
+
             </a>
 
-            <a href="#">
-                <i class="fa-solid fa-scissors"></i>
-                Serviços
-            </a>
+            <a href="#financeSection">
 
-            <a href="#">
-                <i class="fa-solid fa-box"></i>
-                Produtos
-            </a>
-
-            <a href="#">
                 <i class="fa-solid fa-money-bill"></i>
+
                 Financeiro
+
             </a>
 
-            <a href="#">
-                <i class="fa-solid fa-gear"></i>
-                Configurações
+            <a href="#chartSection">
+
+                <i class="fa-solid fa-chart-column"></i>
+
+                Relatórios
+
+            </a>
+
+            <a href="#" id="logoutButton">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                Sair
+
             </a>
 
         </nav>
@@ -114,9 +133,17 @@
 
         <header class="topbar">
 
-            <h1>
-                Dashboard
-            </h1>
+            <div>
+
+                <h1>
+                    Dashboard
+                </h1>
+
+                <p>
+                    Painel administrativo Infinity Barbearia
+                </p>
+
+            </div>
 
             <div class="admin-user">
 
@@ -127,12 +154,12 @@
 
                 <div>
 
-                    <h4>
-                        Vanessa
+                    <h4 id="adminName">
+                        Administrador
                     </h4>
 
                     <span>
-                        Administradora
+                        Infinity Barbearia
                     </span>
 
                 </div>
@@ -145,143 +172,149 @@
 
         <section class="cards">
 
-    <article class="card">
+            <article class="card">
 
-        <div>
+                <div>
 
-            <h3>
-                Entradas
-            </h3>
+                    <h3>
+                        Entradas
+                    </h3>
 
-            <span id="income">
-                R$ 0
-            </span>
+                    <span id="income">
+                        R$ 0
+                    </span>
 
-        </div>
+                </div>
 
-        <i class="fa-solid fa-arrow-trend-up"></i>
+                <i class="fa-solid fa-arrow-trend-up"></i>
 
-    </article>
+            </article>
 
-    <article class="card">
+            <article class="card">
 
-        <div>
+                <div>
 
-            <h3>
-                Saídas
-            </h3>
+                    <h3>
+                        Saídas
+                    </h3>
 
-            <span id="expense">
-                R$ 0
-            </span>
+                    <span id="expense">
+                        R$ 0
+                    </span>
 
-        </div>
+                </div>
 
-        <i class="fa-solid fa-arrow-trend-down"></i>
+                <i class="fa-solid fa-arrow-trend-down"></i>
 
-    </article>
+            </article>
 
-    <article class="card">
+            <article class="card">
 
-        <div>
+                <div>
 
-            <h3>
-                Lucro
-            </h3>
+                    <h3>
+                        Lucro
+                    </h3>
 
-            <span id="profit">
-                R$ 0
-            </span>
+                    <span id="profit">
+                        R$ 0
+                    </span>
 
-        </div>
+                </div>
 
-        <i class="fa-solid fa-wallet"></i>
+                <i class="fa-solid fa-wallet"></i>
 
-    </article>
+            </article>
 
-    <article class="card">
+            <article class="card">
 
-        <div>
+                <div>
 
-            <h3>
-                Agendamentos
-            </h3>
+                    <h3>
+                        Agendamentos
+                    </h3>
 
-            <span id="appointmentsCount">
-                0
-            </span>
+                    <span id="appointmentsCount">
+                        0
+                    </span>
 
-        </div>
+                </div>
 
-        <i class="fa-solid fa-calendar"></i>
+                <i class="fa-solid fa-calendar-check"></i>
 
-    </article>
+            </article>
 
-</section>
+        </section>
 
-<!-- FINANCEIRO -->
+        <!-- FINANCEIRO -->
 
-<section class="finance-section">
+        <section
+            class="finance-section"
+            id="financeSection"
+        >
 
-    <div class="table-card">
+            <div class="table-card">
 
-        <div class="table-header">
+                <div class="table-header">
 
-            <h3>
-                Controle Financeiro
-            </h3>
+                    <h3>
+                        Controle Financeiro
+                    </h3>
 
-        </div>
+                </div>
 
-        <form id="financeForm">
+                <form id="financeForm">
 
-            <input
-                type="text"
-                id="title"
-                placeholder="Título"
-                required
-            >
+                    <input
+                        type="text"
+                        id="title"
+                        placeholder="Título"
+                        required
+                    >
 
-            <select id="type">
+                    <select id="type">
 
-                <option value="entrada">
-                    Entrada
-                </option>
+                        <option value="entrada">
+                            Entrada
+                        </option>
 
-                <option value="saida">
-                    Saída
-                </option>
+                        <option value="saida">
+                            Saída
+                        </option>
 
-            </select>
+                    </select>
 
-            <input
-                type="number"
-                id="amount"
-                placeholder="Valor"
-                required
-            >
+                    <input
+                        type="number"
+                        id="amount"
+                        placeholder="Valor"
+                        required
+                    >
 
-            <input
-                type="text"
-                id="category"
-                placeholder="Categoria"
-            >
+                    <input
+                        type="text"
+                        id="category"
+                        placeholder="Categoria"
+                    >
 
-            <button type="submit">
+                    <button type="submit">
 
-                Salvar
+                        Salvar
 
-            </button>
+                    </button>
 
-        </form>
+                </form>
 
-    </div>
+            </div>
 
-</section>
+        </section>
 
         <!-- CHART -->
 
-        <section class="chart-section">
+        <section
+            class="chart-section"
+            id="chartSection"
+        >
 
             <div class="chart-card">
 
@@ -295,9 +328,12 @@
 
         </section>
 
-        <!-- TABLE -->
+        <!-- APPOINTMENTS -->
 
-        <section class="table-section">
+        <section
+            class="table-section"
+            id="appointmentsSection"
+        >
 
             <div class="table-card">
 
@@ -307,109 +343,63 @@
                         Últimos Agendamentos
                     </h3>
 
-                    <button>
-                        Ver Todos
+                    <button id="refreshAppointments">
+
+                        Atualizar
+
                     </button>
 
                 </div>
 
-                <table>
+                <div class="table-responsive">
 
-                    <thead>
+                    <table>
 
-                        <tr>
+                        <thead>
 
-                            <th>
-                                Cliente
-                            </th>
+                            <tr>
 
-                            <th>
-                                Serviço
-                            </th>
+                                <th>
+                                    Cliente
+                                </th>
 
-                            <th>
-                                Horário
-                            </th>
+                                <th>
+                                    Serviço
+                                </th>
 
-                            <th>
-                                Status
-                            </th>
+                                <th>
+                                    Data
+                                </th>
 
-                        </tr>
+                                <th>
+                                    Horário
+                                </th>
 
-                    </thead>
+                                <th>
+                                    Status
+                                </th>
 
-                    <tbody>
+                            </tr>
 
-                        <tr>
+                        </thead>
 
-                            <td>
-                                Lucas
-                            </td>
+                        <tbody id="appointmentsTable">
 
-                            <td>
-                                Corte
-                            </td>
+                            <tr>
 
-                            <td>
-                                14:00
-                            </td>
+                                <td colspan="5">
 
-                            <td>
-                                <span class="status done">
-                                    Concluído
-                                </span>
-                            </td>
+                                    Carregando...
 
-                        </tr>
+                                </td>
 
-                        <tr>
+                            </tr>
 
-                            <td>
-                                Rafael
-                            </td>
+                        </tbody>
 
-                            <td>
-                                Barba
-                            </td>
+                    </table>
 
-                            <td>
-                                15:30
-                            </td>
-
-                            <td>
-                                <span class="status pending">
-                                    Pendente
-                                </span>
-                            </td>
-
-                        </tr>
-
-                        <tr>
-
-                            <td>
-                                João
-                            </td>
-
-                            <td>
-                                Combo
-                            </td>
-
-                            <td>
-                                16:00
-                            </td>
-
-                            <td>
-                                <span class="status canceled">
-                                    Cancelado
-                                </span>
-                            </td>
-
-                        </tr>
-
-                    </tbody>
-
-                </table>
+                </div>
 
             </div>
 
@@ -417,9 +407,411 @@
 
     </main>
 
-    <!-- JS -->
+    <!-- SCRIPT -->
 
-    <script src="./js/admin.js"></script>
+    <script>
+
+        // ========================================
+        // AUTH
+        // ========================================
+
+        const token =
+        localStorage.getItem(
+            'token'
+        );
+
+        if(!token){
+
+            window.location.href =
+            './login.html';
+
+        }
+
+        // ========================================
+        // USER
+        // ========================================
+
+        const user =
+        JSON.parse(
+
+            localStorage.getItem(
+                'user'
+            )
+
+        );
+
+        if(user){
+
+            document.getElementById(
+                'adminName'
+            ).innerText = user.name;
+
+        }
+
+        // ========================================
+        // LOGOUT
+        // ========================================
+
+        const logoutButton =
+        document.getElementById(
+            'logoutButton'
+        );
+
+        logoutButton.addEventListener(
+
+            'click',
+
+            () => {
+
+                localStorage.removeItem(
+                    'token'
+                );
+
+                localStorage.removeItem(
+                    'user'
+                );
+
+                window.location.href =
+                './login.html';
+
+            }
+
+        );
+
+        // ========================================
+        // CHART
+        // ========================================
+
+        const ctx =
+        document.getElementById(
+            'financeChart'
+        );
+
+        new Chart(ctx, {
+
+            type:'line',
+
+            data:{
+
+                labels:[
+
+                    'Jan',
+                    'Fev',
+                    'Mar',
+                    'Abr',
+                    'Mai',
+                    'Jun'
+
+                ],
+
+                datasets:[{
+
+                    label:'Faturamento',
+
+                    data:[
+
+                        1200,
+                        1900,
+                        3000,
+                        2500,
+                        4200,
+                        5000
+
+                    ],
+
+                    borderWidth:3,
+
+                    tension:0.4
+
+                }]
+
+            },
+
+            options:{
+
+                responsive:true
+
+            }
+
+        });
+
+        // ========================================
+        // FINANCE FORM
+        // ========================================
+
+        const financeForm =
+        document.getElementById(
+            'financeForm'
+        );
+
+        financeForm.addEventListener(
+
+            'submit',
+
+            async (e) => {
+
+                e.preventDefault();
+
+                const financeData = {
+
+                    title:
+
+                    document.getElementById(
+                        'title'
+                    ).value,
+
+                    type:
+
+                    document.getElementById(
+                        'type'
+                    ).value,
+
+                    amount:
+
+                    document.getElementById(
+                        'amount'
+                    ).value,
+
+                    category:
+
+                    document.getElementById(
+                        'category'
+                    ).value
+
+                };
+
+                try{
+
+                    const response =
+                    await fetch(
+
+                        'http://localhost:3000/api/finances',
+
+                        {
+
+                            method:'POST',
+
+                            headers:{
+
+                                'Content-Type':
+                                'application/json',
+
+                                Authorization:
+                                `Bearer ${token}`
+
+                            },
+
+                            body:JSON.stringify(
+                                financeData
+                            )
+
+                        }
+
+                    );
+
+                    const data =
+                    await response.json();
+
+                    if(data.success){
+
+                        alert(
+                            'Registro salvo.'
+                        );
+
+                        financeForm.reset();
+
+                        loadFinances();
+
+                    }
+
+                } catch(error){
+
+                    alert(
+                        'Erro ao salvar.'
+                    );
+
+                }
+
+            }
+
+        );
+
+        // ========================================
+        // LOAD FINANCES
+        // ========================================
+
+        async function loadFinances(){
+
+            try{
+
+                const response =
+                await fetch(
+
+                    'http://localhost:3000/api/finances',
+
+                    {
+
+                        headers:{
+
+                            Authorization:
+                            `Bearer ${token}`
+
+                        }
+
+                    }
+
+                );
+
+                const data =
+                await response.json();
+
+                if(data.success){
+
+                    document.getElementById(
+                        'income'
+                    ).innerText =
+
+                    `R$ ${data.totalEntrada}`;
+
+                    document.getElementById(
+                        'expense'
+                    ).innerText =
+
+                    `R$ ${data.totalSaida}`;
+
+                    document.getElementById(
+                        'profit'
+                    ).innerText =
+
+                    `R$ ${data.balance}`;
+
+                }
+
+            } catch(error){
+
+                console.log(error);
+
+            }
+
+        }
+
+        // ========================================
+        // LOAD APPOINTMENTS
+        // ========================================
+
+        async function loadAppointments(){
+
+            try{
+
+                const response =
+                await fetch(
+
+                    'http://localhost:3000/api/appointments',
+
+                    {
+
+                        headers:{
+
+                            Authorization:
+                            `Bearer ${token}`
+
+                        }
+
+                    }
+
+                );
+
+                const data =
+                await response.json();
+
+                const table =
+                document.getElementById(
+                    'appointmentsTable'
+                );
+
+                table.innerHTML = '';
+
+                if(data.appointments.length === 0){
+
+                    table.innerHTML =
+
+                    `
+                    <tr>
+                        <td colspan="5">
+                            Nenhum agendamento.
+                        </td>
+                    </tr>
+                    `;
+
+                    return;
+
+                }
+
+                document.getElementById(
+                    'appointmentsCount'
+                ).innerText =
+
+                data.total;
+
+                data.appointments.forEach(
+
+                    (appointment) => {
+
+                        table.innerHTML +=
+
+                        `
+                        <tr>
+
+                            <td>
+                                ${appointment.clientName}
+                            </td>
+
+                            <td>
+                                ${appointment.service}
+                            </td>
+
+                            <td>
+                                ${appointment.date}
+                            </td>
+
+                            <td>
+                                ${appointment.hour}
+                            </td>
+
+                            <td>
+
+                                <span class="status pending">
+
+                                    ${appointment.status}
+
+                                </span>
+
+                            </td>
+
+                        </tr>
+                        `;
+
+                    }
+
+                );
+
+            } catch(error){
+
+                console.log(error);
+
+            }
+
+        }
+
+        // ========================================
+        // INIT
+        // ========================================
+
+        loadFinances();
+
+        loadAppointments();
+
+    </script>
 
 </body>
 
